@@ -7,6 +7,7 @@ const typeDefs = gql `
         description: String!
         type: String!
         dateOfPurchase: String
+        imageUrl: String
         obtained: Boolean!
         reminder: Boolean!
     }
