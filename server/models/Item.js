@@ -26,18 +26,9 @@ const itemSchema = new Schema({
 
   reminder: { type: Boolean },
 
-  imgURL: { type: DataTypes, String },
+  imageUrl: { type: DataTypes, String },
 
-  // item: {
-  //   _id: ID,
-  //   type: String,
-  //   name: String,
-  //   description: String,
-  //   dateOfPurchase: String,
-  //   imgURL,
-  //   reminder,
-  //   obtained,
-  // },
+  obtained: { type: Boolean },
 });
 
 const Item = model("Item", itemSchema);
