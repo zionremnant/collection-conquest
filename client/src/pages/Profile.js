@@ -1,5 +1,9 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../utils/queries";
+import { Container } from "@chakra-ui/react";
+import { Stack, HStack, VStack } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 const Profile = () => {
   const { loading, data } = useQuery(QUERY_USER, {
@@ -9,7 +13,7 @@ const Profile = () => {
   const itemList = data?.items || [];
 
   return (
-    <div>
+    <HStack>
       <div>
         {loading ? (
           <div>Loading...</div>
@@ -17,21 +21,21 @@ const Profile = () => {
           <div>
             {itemList.map((item) => {
               return (
-                <div>
+                <Box>
+                  <h2>{item.name}</h2>
                   <div>
-                    <img src={item.ImageUrl} />
+                    <Image src={item.ImageUrl} alt="Image Of Figure" />
                   </div>
-                  <div>{item.name}</div>
-                  <div>{item.description}</div>
-                  <div>{item.type}</div>
-                  <div>{item.dateOfPurchase}</div>
-                </div>
+                  <p>{item.description}</p>
+                  <p>{item.type}</p>
+                  <p>{item.dateOfPurchase}</p>
+                </Box>
               );
             })}
           </div>
         )}
       </div>
-    </div>
+    </HStack>
   );
 };
 
