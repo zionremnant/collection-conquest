@@ -24,11 +24,11 @@ const itemSchema = new Schema({
 
   dateOfPurchase: { type: String },
 
-  reminder: { type: Boolean },
+  reminder: { type: Boolean, allowNull: false },
 
   imageUrl: { type: DataTypes, String },
 
-  obtained: { type: Boolean },
+  obtained: { type: Boolean, allowNull: false },
 });
 
 const Item = model("Item", itemSchema);
