@@ -5,7 +5,6 @@ const bcrypt = require("bcrypt");
 const itemSchema = require("./Item");
 
 
-
 const userSchema = new Schema(
   {
     username: {
