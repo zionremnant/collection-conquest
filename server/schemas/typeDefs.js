@@ -11,6 +11,11 @@ const typeDefs = gql `
         obtained: Boolean!
         reminder: Boolean!
     }
+    type User {
+        username: String!
+        email: String!
+        password: String!
+    }
 `;
 
 module.exports = typeDefs;
