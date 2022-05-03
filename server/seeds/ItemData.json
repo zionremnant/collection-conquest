@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Miku Chan",
+    "description": "Blue haired girl, Vocaloid",
+    "type": "Nendroid Anime Figure",
+    "dateOfPurchase": "05/20/2021",
+    "imageUrl": "",
+    "reminder": false,
+    "obtained": true
+  },
+  {
+    "name": "Rengoku",
+    "description": "Demon Slayer",
+    "type": "Nendroid Anime Figure",
+    "dateOfPurchase": "06/05/2022",
+    "imageUrl": "",
+    "reminder": false,
+    "obtained": true
+  },
+  {
+    "name": "Sempai",
+    "description": "Magical-Girl Sempai",
+    "type": "1/4 Size Anime Figure",
+    "dateOfPurchase": "02/10/2022",
+    "imageUrl": "",
+    "reminder": false,
+    "obtained": true
+  }
+]
