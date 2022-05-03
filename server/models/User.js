@@ -19,10 +19,10 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  savedItem: [
+  item: [
     {
       type: Schema.Types.ObjectId,
-      ref: "savedItem",
+      ref: "Item",
     },
   ],
 });
