@@ -1,6 +1,9 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
+// import schema from Item.js
+const itemSchema = require("./Item");
+
 const userSchema = new Schema({
   username: {
     type: String,
@@ -19,12 +22,8 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  item: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Item",
-    },
-  ],
+  // set item to be an array of data that adheres to the itemSchema
+  item: [itemSchema],
 });
 
 userSchema.pre("save", async function (next) {
