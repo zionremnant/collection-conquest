@@ -17,27 +17,34 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ITEMS = gql`
-  query getNewItem {
+  query getNewItem ($name: String!, $description: String!, dateOfPurchase: String,
+  imageUrl: String, obtained: Boolean!, user: String) {
+    items( name: $name, description: $description, dateOfPurchase: $dateOfPurchase,
+      imageUrl: $imageUrl, obtained: $obtained, user: $user) {
     items {
-      _id
-      itemsText
-      itemsAuthor
-      createdAt
+      name
+      description
+      dateOfPurchase
+      imageUrls
+      obtained
+      user
     }
   }
 `;
 
 export const QUERY_ITEM = gql`
-  query getItems($itemsId: ID!) {
-    items(itemsId: $itemsId) {
+  query getItems($name: String!, $description: String!, dateOfPurchase: String,
+  imageUrl: String, obtained: Boolean!, user: String) {
+    item( name: $name, description: $description, dateOfPurchase: $dateOfPurchase,
+      imageUrl: $imageUrl, obtained: $obtained, reminder: $reminder, user: $user ) {
       _id
-      itemsText
-      itemsAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
+      name
+      description
+      dateOfPurchase
+      imageUrl
+      obtained
+      reminder
+      user
       }
     }
   }
