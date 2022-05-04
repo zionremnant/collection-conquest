@@ -1,7 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../../utils/queries";
-import { Container } from "@chakra-ui/react";
-import { Stack, HStack, VStack } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 
