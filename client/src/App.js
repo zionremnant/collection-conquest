@@ -3,22 +3,20 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 // Imorting file/pages from React
-import Home from './pages/Home';
-import Profile from './pages/Profile';
-import NewItem from './pages/NewItem';
-import Item from './pages/Item';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
+import Home from './components/pages/Home';
+import Profile from './components/pages/Profile';
+import NewItem from './components/pages/NewItem';
+import Item from './components/pages/Item';
+import Login from './components/pages/Login';
 
-import * as React from 'react'
 
 // 1. import `ChakraProvider` component
 import { ChakraProvider } from '@chakra-ui/react'
 
 
 //react calendar for date of purchase
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
+
+// import Calendar from 'react-calendar';
 
 // Apollo Client
 const client = new ApolloClient({
@@ -30,37 +28,34 @@ const client = new ApolloClient({
 function App() {
     return (
         <ApolloProvider client={client}>
-        <ChakraProvider>
-            <Router>
-                <div className="flex-column justify-center align-center min-100-vh bg-primary">
-                    <Routes>
-                        <Route
-                            path="/"
-                            element={<Home />}
-                        />
-                        <Route
-                            path="/Profile"
-                            element={<Profile />}
-                        />
-                        <Route
-                            path="/Login"
-                            element={<Login />}
-                        />
-                        <Route
-                            path="/NewItem"
-                            element={<NewItem />}
-                        />
-                        <Route
-                            path="/Item:itemId"
-                            element={<Item />}
-                        />
-                        <Route
-                            path="*"
-                            element={<NotFound />}
-                        />
-                    </Routes>
-                </div>
-            </Router>
+            <ChakraProvider>
+                <Router>
+                    <div className="flex-column justify-center align-center min-100-vh bg-primary">
+                        <Routes>
+                            <Route
+                                path="/"
+                                element={<Home />}
+                            />
+                            <Route
+                                path="/Profile"
+                                element={<Profile />}
+                            />
+                            <Route
+                                path="/Login"
+                                element={<Login />}
+                            />
+                            <Route
+                                path="/NewItem"
+                                element={<NewItem />}
+                            />
+                            <Route
+                                path="/Item:itemId"
+                                element={<Item />}
+                            />
+
+                        </Routes>
+                    </div>
+                </Router>
             </ChakraProvider>
         </ApolloProvider>
     );
