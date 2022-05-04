@@ -1,18 +1,12 @@
 // WORK IN PROGRESS
-import { useQuery, useMutation } from "@apollo/client";
-import { useParams, Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { useParams } from "react-router-dom";
 import { ADD_ITEM } from "../../utils/mutations";
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input
-} from "@chakra-ui/react";
+import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 // import Calendar from "react-calendar";
-import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Checkbox } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import CloudinaryUploadWidget from "../../CloudinaryUploadWidget";
 
 const NewItem = () => {
