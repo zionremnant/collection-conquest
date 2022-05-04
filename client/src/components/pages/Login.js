@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../utils/mutations";
+import { LOGIN_USER } from "../../utils/mutations";
 import { Container } from "@chakra-ui/react";
 import { Stack, HStack, VStack } from "@chakra-ui/react";
 
-import Auth from "../utils/auth";
+import Auth from "../../utils/auth";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
