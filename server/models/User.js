@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 // import schema from Item.js
 const Item = require("./Item");
 
-
 const userSchema = new Schema(
   {
     username: {
@@ -24,9 +23,9 @@ const userSchema = new Schema(
       minlength: 8,
     },
     // set item to be an array of data that adheres to the itemSchema
-    Item: [{
+    item: [{
       type: Schema.Types.ObjectId,
-        ref: 'Item',
+      ref: Item
     }],
   },
   // set to use virtual below
