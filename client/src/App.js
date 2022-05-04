@@ -10,6 +10,11 @@ import Item from './pages/Item';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 
+import * as React from 'react'
+
+// 1. import `ChakraProvider` component
+import { ChakraProvider } from '@chakra-ui/react'
+
 
 //react calendar for date of purchase
 import React, { useState } from 'react';
@@ -25,6 +30,7 @@ const client = new ApolloClient({
 function App() {
     return (
         <ApolloProvider client={client}>
+        <ChakraProvider>
             <Router>
                 <div className="flex-column justify-center align-center min-100-vh bg-primary">
                     <Routes>
@@ -55,6 +61,7 @@ function App() {
                     </Routes>
                 </div>
             </Router>
+            </ChakraProvider>
         </ApolloProvider>
     );
 }
