@@ -7,9 +7,10 @@ import {
   FormLabel,
   FormErrorMessage,
   FormHelperText,
+  Input
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import Calendar from "react-calendar";
+// import Calendar from "react-calendar";
 import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
 import { Button, ButtonGroup } from "@chakra-ui/react";
 import CloudinaryUploadWidget from "../../CloudinaryUploadWidget";
@@ -74,7 +75,7 @@ const NewItem = () => {
       </FormLabel>
       <Input id="description" type="text" onChange={handleInputChange} />
       <FormLabel htmlFor="name">Date Of Purchase:</FormLabel>
-      <Calendar onChange={onChange} value={value} />
+      {/* <Calendar onChange={onChange} value={value} /> */}
       <FormLabel htmlFor="description">
         Is this Collectible a Pre-Order?
       </FormLabel>
