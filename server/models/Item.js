@@ -18,7 +18,7 @@ const itemSchema = new Schema({
     required: true,
     unique: true,
   },
-  imgimageURL: {
+  imageURL: {
     type: String,
     required: true,
     unique: true,
