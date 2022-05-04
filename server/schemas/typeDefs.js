@@ -5,7 +5,6 @@ const typeDefs = gql `
         _id: ID!
         name: String!
         description: String!
-        type: String!
         dateOfPurchase: String
         imageUrl: String
         obtained: Boolean!
@@ -20,15 +19,17 @@ const typeDefs = gql `
     input itemDataInput {
         name: String!
         description: String!
-        type: String!
         dateOfPurchase: String
         imageUrl: String
         obtained: Boolean!
         reminder: Boolean!
         user: String
     }
+    type Query {
+        me: User
+    }
     type Mutation {
-        saveItem(itemData: itemDataInput!): Item
+        saveItem(itemData: itemDataInput): Item
     }
 `;
 
