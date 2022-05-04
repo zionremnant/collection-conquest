@@ -52,10 +52,7 @@ function App() {
                                 path="/Item:itemId"
                                 element={<Item />}
                             />
-                            <Route
-                                path="*"
-                                element={<NotFound />}
-                            />
+
                         </Routes>
                     </div>
                 </Router>
