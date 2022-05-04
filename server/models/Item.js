@@ -14,21 +14,15 @@ const itemSchema = new Schema({
     maxlength: 280,
   },
 
-  id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true,
-  },
 
-  dateOfPurchase: { type: String },
+  //   dateOfPurchase: { type: String },
 
-  reminder: { type: Boolean, allowNull: false },
+  //   reminder: { type: Boolean, allowNull: false },
 
-  imageUrl: { type: DataTypes, String },
+  //   imageUrl: { type: DataTypes, String },
 
-  obtained: { type: Boolean, allowNull: false },
-});
+  //   obtained: { type: Boolean, allowNull: false },
+  // });
 
   dateOfPurchase: {
     type: String,
