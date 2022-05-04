@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const User = require("./User");
 
 const itemSchema = new Schema({
   name: {
@@ -32,7 +33,9 @@ const itemSchema = new Schema({
     type: Boolean,
     required: true,
   },
-
+  user: {
+    type: String,
+  },
 },
 );
 
