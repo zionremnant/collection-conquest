@@ -1,12 +1,10 @@
 const { Schema, model } = require("mongoose");
-const User = require("./User");
 
 const itemSchema = new Schema({
   name: {
     type: String,
     required: "You must have a name of the item!",
     trim: true,
-    unique: true,
   },
   description: {
     type: String,
@@ -17,17 +15,14 @@ const itemSchema = new Schema({
   dateOfPurchase: {
     type: String,
     required: true,
-    unique: true,
   },
-  imageURL: {
+  imageUrl: {
     type: String,
     required: true,
-    unique: true,
   },
   reminder: {
     type: Boolean,
     required: true,
-    unique: true,
   },
   obtained: {
     type: Boolean,

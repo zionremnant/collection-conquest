@@ -18,52 +18,53 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
-      const token = signToken(user);
+    // addUser: async (parent, args) => {
+    //   const user = await User.create(args);
+    //   const token = signToken(user);
 
-      return { token, user };
-    },
-    login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+    //   return { token, user };
+    // },
+    // login: async (parent, { email, password }) => {
+    //   const user = await User.findOne({ email });
 
-      if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
+    //   if (!user) {
+    //     throw new AuthenticationError("Incorrect credentials");
+    //   }
 
-      const correctPw = await user.isCorrectPassword(password);
+    //   const correctPw = await user.isCorrectPassword(password);
 
-      if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
-      }
+    //   if (!correctPw) {
+    //     throw new AuthenticationError("Incorrect credentials");
+    //   }
 
-      const token = signToken(user);
-      return { token, user };
-    },
+    //   const token = signToken(user);
+    //   return { token, user };
+    // },
     saveItem: async (parent, { itemData }, context) => {
-      if (context.user) {
+      // if (context.user) {
+        console.log(itemData)
         const item = await Item.create(
-         {itemData}
+         {...itemData}
         );
-
+        console.log(item)
         return item;
-      }
+      // }
 
-      throw new AuthenticationError("You need to be logged in!");
+      // throw new AuthenticationError("You need to be logged in!");
     },
-    removeItem: async (parent, { itemId }, context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { item: { itemId } } },
-          { new: true }
-        );
+    // removeItem: async (parent, { itemId }, context) => {
+    //   if (context.user) {
+    //     const updatedUser = await User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $pull: { item: { itemId } } },
+    //       { new: true }
+    //     );
 
-        return updatedUser;
-      }
+    //     return updatedUser;
+    //   }
 
-      throw new AuthenticationError("You need to be logged in!");
-    },
+    //   throw new AuthenticationError("You need to be logged in!");
+    // },
   },
 };
 
