@@ -2,23 +2,23 @@
   "name": "collection-conquest",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js --ignore client",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zionremnant/collection-conquest.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zionremnant/collection-conquest/issues"
+  "devDependencies": {
+    "concurrently": "^5.3.0"
   },
-  "homepage": "https://github.com/zionremnant/collection-conquest#readme",
   "dependencies": {
-    "date-fns": "^2.28.0",
-    "react-calendar": "^3.7.0"
+    "@chakra-ui/react": "^1.8.8",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "framer-motion": "^6.3.3"
   }
 }
