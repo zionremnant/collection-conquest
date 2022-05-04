@@ -32,10 +32,6 @@ export const ADD_ITEM = gql`
       itemText
       itemAuthor
       createdAt
-      comments {
-        _id
-        commentText
-      }
     }
   }
 `;

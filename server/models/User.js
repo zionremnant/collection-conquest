@@ -2,8 +2,7 @@ const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
 // import schema from Item.js
-const itemSchema = require("./Item");
-
+const Item = require("./Item");
 
 const userSchema = new Schema(
   {
@@ -24,7 +23,10 @@ const userSchema = new Schema(
       minlength: 8,
     },
     // set item to be an array of data that adheres to the itemSchema
-    item: [itemSchema],
+    item: [{
+      type: Schema.Types.ObjectId,
+      ref: Item
+    }],
   },
   // set to use virtual below
   { toJSON: { virtuals: true } }
