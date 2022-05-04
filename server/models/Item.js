@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const User = require("./User");
 
 const itemSchema = new Schema({
   name: {
@@ -30,6 +31,31 @@ const itemSchema = new Schema({
 
   obtained: { type: Boolean, allowNull: false },
 });
+
+  dateOfPurchase: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  imageURL: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  reminder: {
+    type: Boolean,
+    required: true,
+    unique: true,
+  },
+  obtained: {
+    type: Boolean,
+    required: true,
+  },
+  user: {
+    type: String,
+  },
+},
+);
 
 const Item = model("Item", itemSchema);
 
