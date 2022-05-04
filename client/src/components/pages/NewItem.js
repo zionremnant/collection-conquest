@@ -1,37 +1,98 @@
 // WORK IN PROGRESS
-import { useQuery, useMutation } from '@apollo/client';
-import { useParams, Link } from 'react-router-dom';
-import { ADD_ITEM } from '../utils/mutations';
-import { QUERY_MATCHUPS } from '../utils/queries';
+import { useQuery, useMutation } from "@apollo/client";
+import { useParams, Link } from "react-router-dom";
+import { ADD_ITEM } from "../../utils/mutations";
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
+import Calendar from "react-calendar";
+import { Checkbox, CheckboxGroup } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
+import CloudinaryUploadWidget from "../../CloudinaryUploadWidget";
 
-const Vote = () => {
-  let { id } = useParams();
-
-  const { loading, data } = useQuery(QUERY_MATCHUPS, {
-    variables: { _id: id },
+const NewItem = () => {
+  const [userFormData, setUserFormData] = useState({
+    name: "",
+    description: "",
+    dateOfPurchase: "",
+    imageURL: "",
+    reminder: null,
+    obtained: null,
   });
 
-  const matchup = data?.matchups || [];
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
+  };
+
+  const [value, onChange] = useState(new Date());
+
+  let { id } = useParams();
 
   const [addItem, { error }] = useMutation(ADD_ITEM);
 
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    try {
+      const { data } = await addItem({
+        variables: { ...userFormData },
+      });
+
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setUserFormData({
+      name: "",
+      description: "",
+      dateOfPurchase: "",
+      imageURL: "",
+      reminder: null,
+      obtained: null,
+    });
+  };
+
   return (
-    <div className="card bg-white card-rounded w-50">
-      <div className="card-header bg-dark text-center">
-        <h1>
-            
-        </h1>
-      </div>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <div className="card-body text-center mt-3">
-        
-        </div>
-      )}
-      {error && <div>Something went wrong...</div>}
-    </div>
+    <FormControl onSubmit={handleFormSubmit}>
+      <FormLabel htmlFor="name">Name Of Collectible:</FormLabel>
+      <Input id="name" type="text" onChange={handleInputChange} />
+      <FormLabel htmlFor="description">
+        Brief Description Of Collectible:
+      </FormLabel>
+      <Input id="description" type="text" onChange={handleInputChange} />
+      <FormLabel htmlFor="name">Date Of Purchase:</FormLabel>
+      <Calendar onChange={onChange} value={value} />
+      <FormLabel htmlFor="description">
+        Is this Collectible a Pre-Order?
+      </FormLabel>
+      <Checkbox defaultChecked onChange={handleInputChange}>
+        Pre-Ordered?
+      </Checkbox>
+      <FormLabel htmlFor="description">
+        Do you have already have this item?
+      </FormLabel>
+      <Checkbox defaultChecked onChange={handleInputChange}>
+        Obtained?
+      </Checkbox>
+      <CloudinaryUploadWidget />
+      <Button type="submit" colorScheme="blue">
+        Submit
+      </Button>
+    </FormControl>
   );
 };
 
-export default Vote;
+export default NewItem;
