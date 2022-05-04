@@ -13,20 +13,28 @@ const itemSchema = new Schema({
     minlength: 1,
     maxlength: 280,
   },
-  dateOfPurchase: { type: String },
-  item: {
-    _id: ID,
+  dateOfPurchase: {
     type: String,
-    name: String,
-    description: String,
-    dateOfPurchase: String,
-    imgURL,
-    reminder,
-    obtained,
     required: true,
     unique: true,
   },
-});
+  imgimageURL: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  reminder: {
+    type: Boolean,
+    required: true,
+    unique: true,
+  },
+  obtained: {
+    type: Boolean,
+    required: true,
+  },
+
+},
+);
 
 const Item = model("Item", itemSchema);
 
