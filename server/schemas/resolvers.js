@@ -18,8 +18,8 @@ const resolvers = {
     items: async () => {
       return await Item.find()
     },
-    item: async () => {
-      return await Item.findOne
+    item: async (parent, {name}) => {
+      return await Item.findOne({name: name})
     }
   },
 

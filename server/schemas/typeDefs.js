@@ -32,7 +32,7 @@ const typeDefs = gql`
     type Query {
         me: User
         items: [Item]
-        item: Item
+        item(name: String!): Item
     }
     type Mutation {
         saveItem(itemData: itemDataInput): Item
