@@ -22,29 +22,29 @@ const NewItem = () => {
 
   const [value, onChange] = useState(new Date());
 
-  const [checked, setChecked] = useState(false)
 
-  const [checkedTwo, setCheckedTwo] = useState(false)
+  const [checked, setChecked] = useState(false);
+
+  const [checkedTwo, setCheckedTwo] = useState(false);
 
   useEffect(() => {
-    console.log(userFormData)
-  }, [userFormData])
+    console.log(userFormData);
+  }, [userFormData]);
 
   useEffect(() => {
     setUserFormData({ ...userFormData, reminder: checked });
-    console.log(checked)
-  }, [checked])
+    console.log(checked);
+  }, [checked]);
 
   useEffect(() => {
     setUserFormData({ ...userFormData, obtained: checkedTwo });
-    console.log(checked)
-  }, [checkedTwo])
-
+    console.log(checked);
+  }, [checkedTwo]);
 
   useEffect(() => {
     setUserFormData({ ...userFormData, dateOfPurchase: value.toDateString() });
-    console.log(value)
-  }, [value])
+    console.log(value);
+  }, [value]);
 
 
   const handleInputChange = (event) => {
@@ -71,7 +71,9 @@ const NewItem = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("I am submitting~")
+
+    console.log("I am submitting~");
+
 
     try {
       const { data } = await saveItem({
@@ -95,29 +97,57 @@ const NewItem = () => {
   };
 
   return (
-    <FormControl >
+
+    <FormControl>
       <FormLabel htmlFor="name">Name Of Collectible:</FormLabel>
-      <Input id="name" name="name" value={userFormData.name} type="text" onChange={handleInputChange} />
+      <Input
+        id="name"
+        name="name"
+        value={userFormData.name}
+        type="text"
+        onChange={handleInputChange}
+      />
       <FormLabel htmlFor="description">
         Brief Description Of Collectible:
       </FormLabel>
-      <Input id="description" name="description" value={userFormData.description} type="text" onChange={handleInputChange} />
+      <Input
+        id="description"
+        name="description"
+        value={userFormData.description}
+        type="text"
+        onChange={handleInputChange}
+      />
       <FormLabel htmlFor="dateOfPurchase">Date Of Purchase:</FormLabel>
       <Calendar id="dateOfPurchase" onChange={onChange} value={value} />
-      <FormLabel htmlFor="reminder">
-        Is this Collectible a Pre-Order?
-      </FormLabel>
-      <Checkbox id="reminder" value={userFormData.reminder} name="reminder" onChange={(e) => setChecked(e.target.checked)}>
+      <FormLabel htmlFor="reminder">Is this Collectible a Pre-Order?</FormLabel>
+      <Checkbox
+        id="reminder"
+        value={userFormData.reminder}
+        name="reminder"
+        onChange={(e) => setChecked(e.target.checked)}
+      >
+
         Pre-Ordered?
       </Checkbox>
       <FormLabel htmlFor="obtained">
         Do you have already have this item?
       </FormLabel>
-      <Checkbox id="obtained" value={userFormData.obtained} name="obtained" onChange={(e) => setCheckedTwo(e.target.checked)}>
+
+      <Checkbox
+        id="obtained"
+        value={userFormData.obtained}
+        name="obtained"
+        onChange={(e) => setCheckedTwo(e.target.checked)}
+      >
         Obtained?
       </Checkbox>
 
-      <CloudinaryUploadWidget setUserFormData={setUserFormData} userFormData={userFormData} />
+      <CloudinaryUploadWidget
+        setUserFormData={setUserFormData}
+        userFormData={userFormData}
+      />
+
+
 
       <Button onClick={handleFormSubmit} type="submit" colorScheme="blue">
         Submit
