@@ -6,17 +6,15 @@ import { Box } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import { useParams } from "react-router";
 
-import Container from "../container";
-
 const Item = () => {
-  // use useparams() to retrieve value of the route parameter :itemId
-  const { itemId } = useParams();
+  // use 'useparams()' to retrieve value of the route parameter 'name'
+  const { name } = useParams();
   const { loading, data } = useQuery(QUERY_ITEM, {
     // pass URL parameter
-    variables: { itemId: itemId },
+    variables: { name: name },
   });
 
-  const item = data?.item || [];
+  const itemList = data?.item || [];
 
   return (
     <div>
@@ -33,7 +31,7 @@ const Item = () => {
                   <Box>
                     <h2>{item.name}</h2>
                     <div>
-                      <Image src={item.ImageUrl} alt="Image Of Figure" />
+                      <Image src={item.imageURL} alt="Image Of Figure" />
                     </div>
                     <p>{item.description}</p>
                     <p>{item.type}</p>
@@ -44,9 +42,6 @@ const Item = () => {
             </div>
           )}
         </HStack>
-      </div>
-      <div>
-        <Container itemId={item._id} />
       </div>
     </div>
   );
