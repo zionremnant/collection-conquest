@@ -83,7 +83,9 @@ const NewItem = () => {
       <Checkbox defaultChecked onChange={handleInputChange}>
         Obtained?
       </Checkbox>
+
       <CloudinaryUploadWidget />
+
       <Button type="submit" colorScheme="blue">
         Submit
       </Button>

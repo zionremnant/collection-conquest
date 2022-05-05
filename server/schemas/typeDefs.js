@@ -31,6 +31,8 @@ const typeDefs = gql`
   }
     type Query {
         me: User
+        items: [Item]
+        item: Item
     }
     type Mutation {
         saveItem(itemData: itemDataInput): Item
