@@ -14,7 +14,7 @@ const Item = () => {
     variables: { name: name },
   });
 
-  const itemList = data?.item || [];
+  const itemList = data?.items || [];
 
   return (
     <div>
