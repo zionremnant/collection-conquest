@@ -52,19 +52,19 @@ const resolvers = {
 
       // throw new AuthenticationError("You need to be logged in!");
     },
-    // removeItem: async (parent, { itemId }, context) => {
-    //   if (context.user) {
-    //     const updatedUser = await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $pull: { item: { itemId } } },
-    //       { new: true }
-    //     );
+    removeItem: async (parent, { itemId }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { item: { itemId } } },
+          { new: true }
+        );
 
-    //     return updatedUser;
-    //   }
+        return updatedUser;
+      }
 
-    //   throw new AuthenticationError("You need to be logged in!");
-    // },
+      throw new AuthenticationError("You need to be logged in!");
+    },
   },
 };
 
