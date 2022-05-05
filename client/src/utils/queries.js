@@ -1,5 +1,5 @@
 // WORK IN PROGRESS
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -23,22 +23,22 @@ export const QUERY_ITEMS = gql`
       name
       description
       dateOfPurchase
-      imageUrl
+      imageURL
       user
     }
   }
 `;
 // STILL IN PROGRESS
 export const QUERY_ITEM = gql`
- query getItem($name: String!) {
-  item(name: $name) {
-    name
-    description
-    dateOfPurchase
-    imageUrl
-    obtained
-    reminder
-    user
+  query getItem($name: String!) {
+    item(name: $name) {
+      name
+      description
+      dateOfPurchase
+      imageURL
+      obtained
+      reminder
+      user
+    }
   }
-}
 `;
