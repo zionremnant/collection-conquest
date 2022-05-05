@@ -22,7 +22,7 @@ export const QUERY_ITEMS = gql`
       name
       description
       dateOfPurchase
-      imageUrl
+      imageURL
       user
     }
   }
@@ -34,7 +34,7 @@ export const QUERY_ITEM = gql`
       name
       description
       dateOfPurchase
-      imageUrl
+      imageURL
       obtained
       reminder
       user

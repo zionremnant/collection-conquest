@@ -37,7 +37,7 @@ const Home = () => {
                       <div>
                         <Image
                           boxSize="xl"
-                          src={item.imageUrl}
+                          src={item.imageURL}
                           alt="Image Of Figure"
                         />
                       </div>

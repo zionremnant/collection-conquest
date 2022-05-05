@@ -23,7 +23,7 @@ const Profile = () => {
                 <Box>
                   <h2>{item.name}</h2>
                   <div>
-                    <Image src={item.ImageUrl} alt="Image Of Figure" />
+                    <Image src={item.ImageURL} alt="Image Of Figure" />
                   </div>
                   <p>{item.description}</p>
                   <p>{item.type}</p>
