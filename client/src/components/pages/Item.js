@@ -4,19 +4,21 @@ import { HStack } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
+import { useParams } from "react-router";
 
 const Item = () => {
+  const { itemId } = useParams();
   const { loading, data } = useQuery(QUERY_ITEM, {
-    fetchPolicy: "no-cache",
+    variables: { itemId: itemId },
   });
 
-  const itemList = data?.items || [];
+  const item = data?.item || [];
 
   return (
     <div>
       <Heading>Welcome to Collection Conquest!!</Heading>
       <div>
-        <h2>Here is a list of the Collection so far!</h2>
+        <h2>Here is the Collectible!</h2>
         <HStack>
           {loading ? (
             <div>Loading...</div>
