@@ -1,13 +1,14 @@
 // WORK IN PROGRESS
 import { useMutation } from "@apollo/client";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { SAVE_ITEM } from "../../utils/mutations";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import { Checkbox } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import CloudinaryUploadWidget from "../../CloudinaryUploadWidget";
+
 
 const NewItem = () => {
   const [userFormData, setUserFormData] = useState({
@@ -15,16 +16,45 @@ const NewItem = () => {
     description: "",
     dateOfPurchase: "",
     imageURL: "",
-    reminder: null,
-    obtained: null,
+    reminder: false,
+    obtained: false,
   });
+
+
+  const [checked, setChecked] = useState(false)
+
+  const [checkedTwo, setCheckedTwo] = useState(false)
+  useEffect(() => {
+    console.log(userFormData)
+  }, [userFormData])
+
+  useEffect(() => {
+    setUserFormData({ ...userFormData, reminder: checked });
+    console.log(checked)
+  }, [checked])
+
+  useEffect(() => {
+    setUserFormData({ ...userFormData, obtained: checkedTwo });
+    console.log(checked)
+  }, [checkedTwo])
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
+    // if (name === "reminder") {
+    //   console.log(event.target.checked)
+    //   setUserFormData({ ...userFormData, [name]: event.target.checked });
+    // }
+    // if (name === "obtained") {
+    //   console.log(event.target.checked)
+    //   setUserFormData({ ...userFormData, [name]: event.target.checked });
+    // }
+
+
     setUserFormData({ ...userFormData, [name]: value });
   };
 
   const [value, onChange] = useState(new Date());
+
 
   // let { id } = useParams();
 
@@ -32,16 +62,11 @@ const NewItem = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    console.log("I am submitting~")
 
     try {
       const { data } = await saveItem({
-        variables: { ...userFormData },
+        variables: { itemData: { ...userFormData } },
       });
 
       console.log(data);
@@ -55,31 +80,31 @@ const NewItem = () => {
       description: "",
       dateOfPurchase: "",
       imageURL: "",
-      reminder: null,
-      obtained: null,
+      reminder: false,
+      obtained: false,
     });
   };
 
   return (
     <FormControl onSubmit={handleFormSubmit}>
       <FormLabel htmlFor="name">Name Of Collectible:</FormLabel>
-      <Input id="name" type="text" onChange={handleInputChange} />
+      <Input id="name" name="name" value={userFormData.name} type="text" onChange={handleInputChange} />
       <FormLabel htmlFor="description">
         Brief Description Of Collectible:
       </FormLabel>
-      <Input id="description" type="text" onChange={handleInputChange} />
-      <FormLabel htmlFor="name">Date Of Purchase:</FormLabel>
-      <Calendar onChange={onChange} value={value} />
-      <FormLabel htmlFor="description">
+      <Input id="description" name="description" value={userFormData.description} type="text" onChange={handleInputChange} />
+      <FormLabel htmlFor="dateOfPurchase">Date Of Purchase:</FormLabel>
+      <Calendar id="dateOfPurchase" onChange={onChange} value={value} />
+      <FormLabel htmlFor="reminder">
         Is this Collectible a Pre-Order?
       </FormLabel>
-      <Checkbox defaultChecked onChange={handleInputChange}>
+      <Checkbox id="reminder" value={userFormData.reminder} name="reminder" onChange={(e) => setChecked(e.target.checked)}>
         Pre-Ordered?
       </Checkbox>
-      <FormLabel htmlFor="description">
+      <FormLabel htmlFor="obtained">
         Do you have already have this item?
       </FormLabel>
-      <Checkbox defaultChecked onChange={handleInputChange}>
+      <Checkbox id="obtained" value={userFormData.obtained} name="obtained" onChange={(e) => setCheckedTwo(e.target.checked)}>
         Obtained?
       </Checkbox>
 
@@ -90,6 +115,7 @@ const NewItem = () => {
       </Button>
     </FormControl>
   );
+
 };
 
 export default NewItem;
