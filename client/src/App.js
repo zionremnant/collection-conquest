@@ -1,18 +1,19 @@
 // Importing React, react-router and Apollo/client
 
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
-    ApolloClient,
-    InMemoryCache,
-    ApolloProvider,
-    createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 // Imorting file/pages from React
-import Home from './components/pages/Home';
-import Profile from './components/pages/Profile';
-import NewItem from './components/pages/NewItem';
+import Home from "./components/pages/Home";
+import Profile from "./components/pages/Profile";
+import NewItem from "./components/pages/NewItem";
+import Item from "./components/pages/Item";
 
 // import Item from './components/pages/Item';
 import Login from "./components/pages/Login";
@@ -22,36 +23,29 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 //react calendar for date of purchase
 
-
 import Navbar from "./components/navbar";
 
-
-
-import Calendar from 'react-calendar';
+import Calendar from "react-calendar";
 
 // Apollo Client
 const httpLink = createHttpLink({
-    uri: '/graphql',
+  uri: "/graphql",
 });
 
-
 const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
 
-    const token = localStorage.getItem('id_token');
-
-    return {
-        headers: {
-            ...headers,
-            authorization: token ? `Bearer ${token}` : '',
-        },
-    };
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
 });
 
 const client = new ApolloClient({
-
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
-
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
 });
 
 // Function to switch pages with routes
@@ -67,10 +61,7 @@ function App() {
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/NewItem" element={<NewItem />} />
-            {/* <Route
-                                path="/Item/:itemId"
-                                element={<Item />}
-                            /> */}
+            <Route path="/Item/:name" element={<Item />} />
           </Routes>
           {/* </div> */}
         </Router>

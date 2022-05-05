@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_ITEMS } from "../../utils/queries";
-import { HStack } from "@chakra-ui/react";
+import { HStack, LinkBox, LinkOverlay } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
@@ -25,26 +25,30 @@ const Home = () => {
               <HStack>
                 {itemList.map((item) => {
                   return (
-                    <Box
-                      bg="teal"
-                      w="30rem"
-                      borderWidth="1rem"
-                      borderRadius="md"
-                      borderColor="teal"
-                      color="white"
-                    >
-                      <h2>{item.name}</h2>
-                      <div>
-                        <Image
-                          boxSize="xl"
-                          src={item.imageURL}
-                          alt="Image Of Figure"
-                        />
-                      </div>
-                      <p>{item.description}</p>
-                      <p>{item.type}</p>
-                      <p>{item.dateOfPurchase}</p>
-                    </Box>
+                    <LinkBox>
+                      <Box
+                        bg="teal"
+                        w="30rem"
+                        borderWidth="1rem"
+                        borderRadius="md"
+                        borderColor="teal"
+                        color="white"
+                      >
+                        <h2>{item.name}</h2>
+                        <div>
+                          <LinkOverlay href={`/Item/${item.name}`}>
+                            <Image
+                              boxSize="xl"
+                              src={item.imageURL}
+                              alt="Image Of Figure"
+                            />
+                          </LinkOverlay>
+                        </div>
+                        <p>{item.description}</p>
+                        <p>{item.type}</p>
+                        <p>{item.dateOfPurchase}</p>
+                      </Box>
+                    </LinkBox>
                   );
                 })}
               </HStack>
