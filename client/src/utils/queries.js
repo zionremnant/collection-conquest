@@ -1,5 +1,5 @@
 // WORK IN PROGRESS
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -17,35 +17,27 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ITEMS = gql`
-  query getNewItem ($name: String!, $description: String!, dateOfPurchase: String,
-  imageUrl: String, obtained: Boolean!, user: String) {
-    items( name: $name, description: $description, dateOfPurchase: $dateOfPurchase,
-      imageUrl: $imageUrl, obtained: $obtained, user: $user) {
+  query getNewItems {
     items {
       name
       description
       dateOfPurchase
-      imageUrls
-      obtained
+      imageURL
       user
     }
   }
 `;
-
+// STILL IN PROGRESS
 export const QUERY_ITEM = gql`
-  query getItems($name: String!, $description: String!, dateOfPurchase: String,
-  imageUrl: String, obtained: Boolean!, user: String) {
-    item( name: $name, description: $description, dateOfPurchase: $dateOfPurchase,
-      imageUrl: $imageUrl, obtained: $obtained, reminder: $reminder, user: $user ) {
-      _id
+  query getItem($name: String!) {
+    item(name: $name) {
       name
       description
       dateOfPurchase
-      imageUrl
+      imageURL
       obtained
       reminder
       user
-      }
     }
   }
 `;

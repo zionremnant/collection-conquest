@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
-import { Container } from "@chakra-ui/react";
+import { Box, Button, Container, FormControl, Input } from "@chakra-ui/react";
 import { VStack } from "@chakra-ui/react";
 
 import Auth from "../../utils/auth";
@@ -45,16 +45,16 @@ const Login = (props) => {
   return (
     <VStack>
       <Container>
-        <h4 className="card-header bg-dark text-light p-2">Login</h4>
-        <div className="card-body">
+        <h4>Login</h4>
+        <Box w="40rem" bg="teal" border="1rem" borderColor="teal">
           {data ? (
             <p>
               Success! You may now head{" "}
               <Link to="/">back to the homepage.</Link>
             </p>
           ) : (
-            <form onSubmit={handleFormSubmit}>
-              <input
+            <FormControl onSubmit={handleFormSubmit}>
+              <Input
                 className="form-input"
                 placeholder="Your email"
                 name="email"
@@ -62,7 +62,7 @@ const Login = (props) => {
                 value={formState.email}
                 onChange={handleChange}
               />
-              <input
+              <Input
                 className="form-input"
                 placeholder="******"
                 name="password"
@@ -70,20 +70,20 @@ const Login = (props) => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button
+              <Button
                 className="btn btn-block btn-info"
                 style={{ cursor: "pointer" }}
                 type="submit"
               >
                 Submit
-              </button>
-            </form>
+              </Button>
+            </FormControl>
           )}
 
           {error && (
             <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
           )}
-        </div>
+        </Box>
       </Container>
     </VStack>
   );
