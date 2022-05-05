@@ -6,7 +6,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
 import NewItem from './components/pages/NewItem';
-import Item from './components/pages/Item';
+// import Item from './components/pages/Item';
 import Login from './components/pages/Login';
 
 
@@ -48,10 +48,10 @@ function App() {
                                 path="/NewItem"
                                 element={<NewItem />}
                             />
-                            <Route
-                                path="/Item:itemId"
+                            {/* <Route
+                                path="/Item/:itemId"
                                 element={<Item />}
-                            />
+                            /> */}
 
                         </Routes>
                     </div>
