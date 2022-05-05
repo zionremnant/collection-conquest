@@ -16,7 +16,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 
 //react calendar for date of purchase
 
-// import Calendar from 'react-calendar';
+import Calendar from 'react-calendar';
 
 // Apollo Client
 const client = new ApolloClient({
