@@ -29,15 +29,15 @@ export const QUERY_ITEMS = gql`
 `;
 // STILL IN PROGRESS
 export const QUERY_ITEM = gql`
-  query getItem {
-    item {
-      name
-      description
-      dateOfPurchase
-      imageUrl
-      obtained
-      reminder
-      user
-      }
+ query getItem($name: String!) {
+  item(name: $name) {
+    name
+    description
+    dateOfPurchase
+    imageUrl
+    obtained
+    reminder
+    user
   }
+}
 `;

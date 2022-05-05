@@ -1,11 +1,19 @@
 // Importing React, react-router and Apollo/client
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-// Importing file/pages from React
-import Home from "./components/pages/Home";
-import Profile from "./components/pages/Profile";
-import NewItem from "./components/pages/NewItem";
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
+    createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+// Imorting file/pages from React
+import Home from './components/pages/Home';
+import Profile from './components/pages/Profile';
+import NewItem from './components/pages/NewItem';
+
 // import Item from './components/pages/Item';
 import Login from "./components/pages/Login";
 
@@ -14,14 +22,36 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 //react calendar for date of purchase
 
+
 import Navbar from "./components/navbar";
 
-// import Calendar from 'react-calendar';
+
+
+import Calendar from 'react-calendar';
 
 // Apollo Client
+const httpLink = createHttpLink({
+    uri: '/graphql',
+});
+
+
+const authLink = setContext((_, { headers }) => {
+
+    const token = localStorage.getItem('id_token');
+
+    return {
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : '',
+        },
+    };
+});
+
 const client = new ApolloClient({
-  uri: "/graphql",
-  cache: new InMemoryCache(),
+
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+
 });
 
 // Function to switch pages with routes
