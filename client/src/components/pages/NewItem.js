@@ -1,6 +1,6 @@
 // WORK IN PROGRESS
 import { useMutation } from "@apollo/client";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { SAVE_ITEM } from "../../utils/mutations";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
