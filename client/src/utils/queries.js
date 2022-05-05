@@ -17,12 +17,6 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ITEMS = gql`
-<<<<<<< HEAD
-<<<<<<< HEAD
-  query getNewItem ($name: String!, $description: String!, $dateOfPurchase: String, $imageUrl: String, $obtained: Boolean!, $user: String) {
-    items( name: $name, description: $description, dateOfPurchase: $dateOfPurchase,
-      imageUrl: $imageUrl, obtained: $obtained, user: $user) {
-
   query getNewItems {
 
     items {
