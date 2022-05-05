@@ -36,7 +36,7 @@ const typeDefs = gql`
         saveItem(itemData: itemDataInput): Item
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        removeItem(iteData: itemDataInput): Item
+        removeItem(itemData: itemDataInput): Item
     }
 
 `;

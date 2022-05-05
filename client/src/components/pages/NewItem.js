@@ -1,10 +1,10 @@
 // WORK IN PROGRESS
 import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
-import { ADD_ITEM } from "../../utils/mutations";
+import { SAVE_ITEM } from "../../utils/mutations";
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
-// import Calendar from "react-calendar";
+import Calendar from "react-calendar";
 import { Checkbox } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import CloudinaryUploadWidget from "../../CloudinaryUploadWidget";
@@ -26,9 +26,9 @@ const NewItem = () => {
 
   const [value, onChange] = useState(new Date());
 
-  let { id } = useParams();
+  // let { id } = useParams();
 
-  const [addItem, { error }] = useMutation(ADD_ITEM);
+  const [saveItem, { error }] = useMutation(SAVE_ITEM);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -40,7 +40,7 @@ const NewItem = () => {
     }
 
     try {
-      const { data } = await addItem({
+      const { data } = await saveItem({
         variables: { ...userFormData },
       });
 
@@ -69,7 +69,7 @@ const NewItem = () => {
       </FormLabel>
       <Input id="description" type="text" onChange={handleInputChange} />
       <FormLabel htmlFor="name">Date Of Purchase:</FormLabel>
-      {/* <Calendar onChange={onChange} value={value} /> */}
+      <Calendar onChange={onChange} value={value} />
       <FormLabel htmlFor="description">
         Is this Collectible a Pre-Order?
       </FormLabel>
