@@ -30,15 +30,6 @@ export const SAVE_ITEM = gql`
     saveItem(itemData: $itemData) {
       token
       user {
-
-export const ADD_ITEM = gql`
-  mutation additem($name: String!, $description: String!, dateOfPurchase: String,
-  imageUrl: String, obtained: Boolean!, user: String) {
-    additem(name: $name, description: $description, dateOfPurchase: $dateOfPurchase,
-      imageUrl: $imageUrl, obtained: $obtained, reminder: $reminder, user: $user) {
-        token
-       user {
-
         _id
       }
       name
