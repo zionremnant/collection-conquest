@@ -1,14 +1,18 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_ITEM } from "../../utils/queries";
-import { HStack } from "@chakra-ui/react";
+import { Container, HStack } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
 import { useParams } from "react-router";
 
+import Container from "../container";
+
 const Item = () => {
+  // use useparams() to retrieve value of the route parameter :itemId
   const { itemId } = useParams();
   const { loading, data } = useQuery(QUERY_ITEM, {
+    // pass URL parameter
     variables: { itemId: itemId },
   });
 
@@ -40,6 +44,9 @@ const Item = () => {
             </div>
           )}
         </HStack>
+      </div>
+      <div>
+        <Container itemId={item._id} />
       </div>
     </div>
   );
