@@ -22,19 +22,32 @@ const Home = () => {
             <div>Loading...</div>
           ) : (
             <div>
-              {itemList.map((item) => {
-                return (
-                  <Box>
-                    <h2>{item.name}</h2>
-                    <div>
-                      <Image src={item.ImageUrl} alt="Image Of Figure" />
-                    </div>
-                    <p>{item.description}</p>
-                    <p>{item.type}</p>
-                    <p>{item.dateOfPurchase}</p>
-                  </Box>
-                );
-              })}
+              <HStack>
+                {itemList.map((item) => {
+                  return (
+                    <Box
+                      bg="teal"
+                      w="30rem"
+                      borderWidth="1rem"
+                      borderRadius="md"
+                      borderColor="teal"
+                      color="white"
+                    >
+                      <h2>{item.name}</h2>
+                      <div>
+                        <Image
+                          boxSize="xl"
+                          src={item.imageUrl}
+                          alt="Image Of Figure"
+                        />
+                      </div>
+                      <p>{item.description}</p>
+                      <p>{item.type}</p>
+                      <p>{item.dateOfPurchase}</p>
+                    </Box>
+                  );
+                })}
+              </HStack>
             </div>
           )}
         </HStack>
