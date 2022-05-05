@@ -6,7 +6,7 @@ const typeDefs = gql`
         name: String!
         description: String!
         dateOfPurchase: String
-        imageUrl: String
+        imageURL: String
         obtained: Boolean!
         reminder: Boolean!
         user: String
@@ -20,10 +20,10 @@ const typeDefs = gql`
         name: String!
         description: String!
         dateOfPurchase: String
-        imageUrl: String
+        imageURL: String
         obtained: Boolean!
         reminder: Boolean!
-        user: String
+
     }
     type Auth {
     token: ID!

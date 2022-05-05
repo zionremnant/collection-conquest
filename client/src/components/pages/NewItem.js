@@ -20,10 +20,12 @@ const NewItem = () => {
     obtained: false,
   });
 
+  const [value, onChange] = useState(new Date());
 
   const [checked, setChecked] = useState(false)
 
   const [checkedTwo, setCheckedTwo] = useState(false)
+
   useEffect(() => {
     console.log(userFormData)
   }, [userFormData])
@@ -37,6 +39,13 @@ const NewItem = () => {
     setUserFormData({ ...userFormData, obtained: checkedTwo });
     console.log(checked)
   }, [checkedTwo])
+
+
+  useEffect(() => {
+    setUserFormData({ ...userFormData, dateOfPurchase: value.toDateString() });
+    console.log(value)
+  }, [value])
+
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -53,7 +62,7 @@ const NewItem = () => {
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-  const [value, onChange] = useState(new Date());
+
 
 
   // let { id } = useParams();
@@ -86,7 +95,7 @@ const NewItem = () => {
   };
 
   return (
-    <FormControl onSubmit={handleFormSubmit}>
+    <FormControl >
       <FormLabel htmlFor="name">Name Of Collectible:</FormLabel>
       <Input id="name" name="name" value={userFormData.name} type="text" onChange={handleInputChange} />
       <FormLabel htmlFor="description">
@@ -108,9 +117,9 @@ const NewItem = () => {
         Obtained?
       </Checkbox>
 
-      <CloudinaryUploadWidget />
+      <CloudinaryUploadWidget setUserFormData={setUserFormData} userFormData={userFormData} />
 
-      <Button type="submit" colorScheme="blue">
+      <Button onClick={handleFormSubmit} type="submit" colorScheme="blue">
         Submit
       </Button>
     </FormControl>
