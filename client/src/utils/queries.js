@@ -18,12 +18,13 @@ export const QUERY_USER = gql`
 
 export const QUERY_ITEMS = gql`
 <<<<<<< HEAD
+<<<<<<< HEAD
   query getNewItem ($name: String!, $description: String!, $dateOfPurchase: String, $imageUrl: String, $obtained: Boolean!, $user: String) {
     items( name: $name, description: $description, dateOfPurchase: $dateOfPurchase,
       imageUrl: $imageUrl, obtained: $obtained, user: $user) {
-=======
+
   query getNewItems {
->>>>>>> 65023b7435317a92878b06446209693d883e111c
+
     items {
       name
       description
@@ -35,15 +36,15 @@ export const QUERY_ITEMS = gql`
 `;
 // STILL IN PROGRESS
 export const QUERY_ITEM = gql`
-  query getItem {
-    item {
-      name
-      description
-      dateOfPurchase
-      imageUrl
-      obtained
-      reminder
-      user
-      }
+ query getItem($name: String!) {
+  item(name: $name) {
+    name
+    description
+    dateOfPurchase
+    imageUrl
+    obtained
+    reminder
+    user
   }
+}
 `;
