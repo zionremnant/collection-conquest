@@ -9,12 +9,13 @@ import { useParams } from "react-router";
 const Item = () => {
   // use 'useparams()' to retrieve value of the route parameter 'name'
   const { name } = useParams();
+  console.log(name);
   const { loading, data } = useQuery(QUERY_ITEM, {
     // pass URL parameter
     variables: { name: name },
   });
-
-  const itemList = data?.item || [];
+  console.log(data);
+  // const itemList = data?.items || [];
 
   return (
     <div>
@@ -26,19 +27,30 @@ const Item = () => {
             <div>Loading...</div>
           ) : (
             <div>
-              {itemList.map((item) => {
-                return (
-                  <Box>
-                    <h2>{item.name}</h2>
-                    <div>
-                      <Image src={item.imageURL} alt="Image Of Figure" />
-                    </div>
-                    <p>{item.description}</p>
-                    <p>{item.type}</p>
-                    <p>{item.dateOfPurchase}</p>
-                  </Box>
-                );
-              })}
+              {/* {itemList.map((item) => { */}
+              {/* return ( */}
+              <Box
+                bg="teal"
+                w="30rem"
+                borderWidth="1rem"
+                borderRadius="md"
+                borderColor="teal"
+                color="white"
+              >
+                <h2>{data.item.name}</h2>
+                <div>
+                  <Image
+                    boxSize="xl"
+                    src={data.item.imageURL}
+                    alt="Image Of Figure"
+                  />
+                </div>
+                <p>{data.item.description}</p>
+                <p>{data.item.type}</p>
+                <p>{data.item.dateOfPurchase}</p>
+              </Box>
+              {/* ); */}
+              {/* })} */}
             </div>
           )}
         </HStack>
