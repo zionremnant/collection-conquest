@@ -9,6 +9,7 @@ import { Checkbox } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import CloudinaryUploadWidget from "../../CloudinaryUploadWidget";
 
+
 const NewItem = () => {
   const [userFormData, setUserFormData] = useState({
     name: "",
@@ -88,6 +89,7 @@ const NewItem = () => {
       </Button>
     </FormControl>
   );
+
 };
 
 export default NewItem;
