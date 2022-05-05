@@ -16,27 +16,21 @@ export const QUERY_USER = gql`
   }
 `;
 
-// export const QUERY_ITEMS = gql`
-//   query getNewItem ($name: String!, $description: String!, $dateOfPurchase: String, $imageUrl: String, $obtained: Boolean!, $user: String) {
-//     items( name: $name, description: $description, dateOfPurchase: $dateOfPurchase,
-//       imageUrl: $imageUrl, obtained: $obtained, user: $user) {
-//     items {
-//       name
-//       description
-//       dateOfPurchase
-//       imageUrls
-//       obtained
-//       user
-//     }
-//   }
-// `;
-
+export const QUERY_ITEMS = gql`
+  query getNewItems {
+    items {
+      name
+      description
+      dateOfPurchase
+      imageUrl
+      user
+    }
+  }
+`;
+// STILL IN PROGRESS
 export const QUERY_ITEM = gql`
-  query getItems($name: String!, $description: String!, $dateOfPurchase: String,
-  imageUrl: String, obtained: Boolean!, user: String) {
-    item( name: $name, description: $description, dateOfPurchase: $dateOfPurchase,
-      imageUrl: $imageUrl, obtained: $obtained, reminder: $reminder, user: $user ) {
-      _id
+  query getItem {
+    item {
       name
       description
       dateOfPurchase
@@ -45,6 +39,5 @@ export const QUERY_ITEM = gql`
       reminder
       user
       }
-    }
   }
 `;
