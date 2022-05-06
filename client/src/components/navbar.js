@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@chakra-ui/react";
+import Auth from "../utils/auth";
 
 function NavTabs() {
   return (
@@ -11,7 +12,15 @@ function NavTabs() {
         <Link href="/newitem">New Item</Link>
       </li>
       <li>
-        <Link href="/profile">Profile</Link>
+        <Link
+          href={`/profile/${
+            Auth.loggedIn() && Auth.getProfile().data.username
+              ? Auth.getProfile().data.username
+              : ""
+          }`}
+        >
+          Profile
+        </Link>
       </li>
       <li>
         <Link href="/login">Login</Link>
