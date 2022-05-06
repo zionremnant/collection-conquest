@@ -21,6 +21,7 @@ export const QUERY_USER = gql`
 
 export const QUERY_ITEMS = gql`
   query getNewItems {
+
     items {
       name
       description
