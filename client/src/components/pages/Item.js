@@ -14,13 +14,8 @@ const Item = () => {
     // pass URL parameter
     variables: { name: name },
   });
-<<<<<<< HEAD
-
-  const itemList = data?.items || [];
-=======
   console.log(data);
   // const itemList = data?.items || [];
->>>>>>> develop
 
   return (
     <div>
