@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_ITEMS } from "../../utils/queries";
-import { HStack, LinkBox, LinkOverlay, SimpleGrid, Text } from "@chakra-ui/react";
+import { HStack, LinkBox, LinkOverlay, Text, Wrap, WrapItem } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
@@ -40,37 +40,44 @@ const Home = () => {
                         ) : (
                             <div>
                                 <HStack>
-                                    <SimpleGrid columns={3} spacing="15">
+
+                                    <Wrap>
+
+
                                         {itemList.map((item) => {
                                             return (
-                                                <LinkBox>
-                                                    <Box
-                                                        bg="#086F83"
-                                                        w="30rem"
-                                                        borderWidth="1rem"
-                                                        borderRadius="md"
-                                                        borderColor="#086F83"
-                                                        color="white"
+                                                <WrapItem>
+                                                    <LinkBox>
 
-                                                    >
+                                                        <Box
+                                                            bg="#086F83"
+                                                            w="30rem"
+                                                            borderWidth="1rem"
+                                                            borderRadius="md"
+                                                            borderColor="#086F83"
+                                                            color="white"
 
-                                                        <Text fontSize='4xl' as='u'> {item.name}</Text>
-                                                        <div>
-                                                            <LinkOverlay href={`/Item/${item.name}`}>
-                                                                <Image
-                                                                    boxSize="xl"
-                                                                    src={item.imageURL}
-                                                                    alt="Image Of Figure"
-                                                                />
-                                                            </LinkOverlay>
-                                                        </div>
-                                                        <Text fontSize='2xl' > {item.description}</Text>
-                                                        <Text fontSize='1xl' > Date of Purchase: {item.dateOfPurchase}</Text>
-                                                    </Box>
-                                                </LinkBox>
+                                                        >
+
+                                                            <Text fontSize='4xl' as='u'> {item.name}</Text>
+                                                            <div>
+                                                                <LinkOverlay href={`/Item/${item.name}`}>
+                                                                    <Image
+                                                                        boxSize="xl"
+                                                                        src={item.imageURL}
+                                                                        alt="Image Of Figure"
+                                                                    />
+                                                                </LinkOverlay>
+                                                            </div>
+                                                            <Text fontSize='2xl' > {item.description}</Text>
+                                                            <Text fontSize='1xl' > Date of Purchase: {item.dateOfPurchase}</Text>
+                                                        </Box>
+                                                    </LinkBox>
+                                                </WrapItem>
                                             );
                                         })}
-                                    </SimpleGrid>
+
+                                    </Wrap>
                                 </HStack>
                             </div>
                         )}

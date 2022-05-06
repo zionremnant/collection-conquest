@@ -90,12 +90,12 @@ const NewItem = () => {
 
   return (
 
-    <FormControl w='100%'
-      h='100%'
-      bgGradient='linear( blue.200, green.300, cyan.600)'>
+    <FormControl>
+
       <FormLabel htmlFor="name">Name Of Collectible:</FormLabel>
       <Input
-        color="white"
+
+
         id="name"
         name="name"
         value={userFormData.name}
@@ -142,7 +142,9 @@ const NewItem = () => {
       <Button onClick={handleFormSubmit} type="submit" colorScheme="blue">
         Submit
       </Button>
-    </FormControl>
+
+    </FormControl >
+
   );
 };
 
