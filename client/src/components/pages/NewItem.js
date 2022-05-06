@@ -89,9 +89,13 @@ const NewItem = () => {
   };
 
   return (
+
     <FormControl>
+
       <FormLabel htmlFor="name">Name Of Collectible:</FormLabel>
       <Input
+
+
         id="name"
         name="name"
         value={userFormData.name}
@@ -138,7 +142,9 @@ const NewItem = () => {
       <Button onClick={handleFormSubmit} type="submit" colorScheme="blue">
         Submit
       </Button>
-    </FormControl>
+
+    </FormControl >
+
   );
 };
 
