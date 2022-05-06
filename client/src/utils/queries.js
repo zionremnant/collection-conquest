@@ -1,5 +1,5 @@
 // WORK IN PROGRESS
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -17,28 +17,28 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_ITEMS = gql`
-  query getNewItem {
+  query getNewItems {
+
     items {
-      _id
-      itemsText
-      itemsAuthor
-      createdAt
+      name
+      description
+      dateOfPurchase
+      imageURL
+      user
     }
   }
 `;
-
+// STILL IN PROGRESS
 export const QUERY_ITEM = gql`
-  query getItems($itemsId: ID!) {
-    items(itemsId: $itemsId) {
-      _id
-      itemsText
-      itemsAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
+  query getItem($name: String!) {
+    item(name: $name) {
+      name
+      description
+      dateOfPurchase
+      imageURL
+      obtained
+      reminder
+      user
     }
   }
 `;

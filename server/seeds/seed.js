@@ -5,7 +5,8 @@ const itemData = require("./ItemData.json");
 const userData = require("./UserData.json");
 
 db.once("open", async () => {
-  await Tech.deleteMany({});
+  await Item.deleteMany({});
+  await User.deleteMany({});
 
   const items = await Item.insertMany(itemData);
   const users = await User.insertMany(userData);

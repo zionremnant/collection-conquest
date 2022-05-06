@@ -1,38 +1,23 @@
-import React from 'react';
+import React from "react";
+import { Link } from "@chakra-ui/react";
 
-function NavTabs({ currentPage, handlePageChange }) {
-    return (
-        <ul className="nav nav-tabs">
-            <li className="nav-item">
-                <a
-                    href="#home"
-                    onClick={() => handlePageChange('Home')}
-                    className={currentPage === 'Home' ? 'nav-link active' : 'nav-link'}
-                >
-                    Home
-                </a>
-            </li>
-            <li className="nav-item">
-                <a
-                    href="#new-item"
-                    onClick={() => handlePageChange('New Item')}
-                    className={currentPage === 'New-Item' ? 'nav-link active' : 'nav-link'}
-                >
-                    New Item
-                </a>
-            </li>
-            <li className="nav-item">
-                <a
-                    href="#profile"
-                    onClick={() => handlePageChange('Profile')}
-                    className={currentPage === 'Profile' ? 'nav-link active' : 'nav-link'}
-                >
-                    Profile
-                </a>
-            </li>
-
-        </ul>
-    );
+function NavTabs() {
+  return (
+    <ul>
+      <li>
+        <Link href="/">Home</Link>
+      </li>
+      <li>
+        <Link href="/newitem">New Item</Link>
+      </li>
+      <li>
+        <Link href="/profile">Profile</Link>
+      </li>
+      <li>
+        <Link href="/login">Login</Link>
+      </li>
+    </ul>
+  );
 }
 
 export default NavTabs;

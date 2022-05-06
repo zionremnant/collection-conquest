@@ -1,7 +1,6 @@
 import { useQuery } from "@apollo/client";
-import { QUERY_USER } from "../utils/queries";
-import { Container } from "@chakra-ui/react";
-import { Stack, HStack, VStack } from "@chakra-ui/react";
+import { QUERY_USER } from "../../utils/queries";
+import { HStack } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 
@@ -24,7 +23,7 @@ const Profile = () => {
                 <Box>
                   <h2>{item.name}</h2>
                   <div>
-                    <Image src={item.ImageUrl} alt="Image Of Figure" />
+                    <Image src={item.ImageURL} alt="Image Of Figure" />
                   </div>
                   <p>{item.description}</p>
                   <p>{item.type}</p>

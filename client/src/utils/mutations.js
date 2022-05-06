@@ -1,5 +1,4 @@
-// NOT DONE
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -25,13 +24,16 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_ITEM = gql`
-  mutation additem($itemText: String!, $itemAuthor: String!) {
-    additem(itemText: $itemText, itemAuthor: $itemAuthor) {
-      _id
-      itemText
-      itemAuthor
-      createdAt
+export const SAVE_ITEM = gql`
+  mutation saveItem($itemData: itemDataInput) {
+    saveItem(itemData: $itemData) {
+      name
+      description
+      dateOfPurchase
+      imageURL
+      obtained
+      reminder
+      user
     }
   }
 `;
