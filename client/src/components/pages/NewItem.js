@@ -9,7 +9,6 @@ import { Checkbox } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import CloudinaryUploadWidget from "../../CloudinaryUploadWidget";
 
-
 const NewItem = () => {
   const [userFormData, setUserFormData] = useState({
     name: "",
@@ -21,7 +20,6 @@ const NewItem = () => {
   });
 
   const [value, onChange] = useState(new Date());
-
 
   const [checked, setChecked] = useState(false);
 
@@ -46,7 +44,6 @@ const NewItem = () => {
     console.log(value);
   }, [value]);
 
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     // if (name === "reminder") {
@@ -58,12 +55,8 @@ const NewItem = () => {
     //   setUserFormData({ ...userFormData, [name]: event.target.checked });
     // }
 
-
     setUserFormData({ ...userFormData, [name]: value });
   };
-
-
-
 
   // let { id } = useParams();
 
@@ -73,7 +66,6 @@ const NewItem = () => {
     event.preventDefault();
 
     console.log("I am submitting~");
-
 
     try {
       const { data } = await saveItem({
@@ -97,7 +89,6 @@ const NewItem = () => {
   };
 
   return (
-
     <FormControl>
       <FormLabel htmlFor="name">Name Of Collectible:</FormLabel>
       <Input
@@ -126,12 +117,9 @@ const NewItem = () => {
         name="reminder"
         onChange={(e) => setChecked(e.target.checked)}
       >
-
         Pre-Ordered?
       </Checkbox>
-      <FormLabel htmlFor="obtained">
-        Do you have already have this item?
-      </FormLabel>
+      <FormLabel htmlFor="obtained">Do you already have this item?</FormLabel>
 
       <Checkbox
         id="obtained"
@@ -147,14 +135,11 @@ const NewItem = () => {
         userFormData={userFormData}
       />
 
-
-
       <Button onClick={handleFormSubmit} type="submit" colorScheme="blue">
         Submit
       </Button>
     </FormControl>
   );
-
 };
 
 export default NewItem;
