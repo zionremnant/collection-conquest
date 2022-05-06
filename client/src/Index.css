@@ -1,0 +1,10 @@
+.navBar {
+    background-color: rgb(136, 177, 177);
+    padding: 80px;
+    border: 8px solid teal;
+   }
+   .float-child {
+       width: 20%;
+       float: right;
+       font-size: 5vh;
+   }

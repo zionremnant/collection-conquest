@@ -5,26 +5,33 @@ const itemSchema = new Schema({
     type: String,
     required: "You must have a name of the item!",
     trim: true,
-    unique: true,
   },
+
   description: {
     type: String,
     required: "You must have a description!",
     minlength: 1,
     maxlength: 280,
   },
-  dateOfPurchase: { type: String },
-  item: {
-    _id: ID,
+
+  dateOfPurchase: {
     type: String,
-    name: String,
-    description: String,
-    dateOfPurchase: String,
-    imgURL,
-    reminder,
-    obtained,
     required: true,
-    unique: true,
+  },
+  imageURL: {
+    type: String,
+    required: true,
+  },
+  reminder: {
+    type: Boolean,
+    required: true,
+  },
+  obtained: {
+    type: Boolean,
+    required: true,
+  },
+  user: {
+    type: String,
   },
 });
 
