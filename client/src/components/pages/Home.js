@@ -65,7 +65,7 @@ const Home = () => {
                                                             </LinkOverlay>
                                                         </div>
                                                         <Text fontSize='2xl' > {item.description}</Text>
-                                                        <Text fontSize='1xl' > {item.dateOfPurchase}</Text>
+                                                        <Text fontSize='1xl' > Date of Purchase: {item.dateOfPurchase}</Text>
                                                     </Box>
                                                 </LinkBox>
                                             );

@@ -22,7 +22,6 @@ const NewItem = () => {
 
   const [value, onChange] = useState(new Date());
 
-
   const [checked, setChecked] = useState(false);
 
   const [checkedTwo, setCheckedTwo] = useState(false);
@@ -98,9 +97,12 @@ const NewItem = () => {
 
   return (
 
-    <FormControl>
+    <FormControl w='100%'
+      h='100%'
+      bgGradient='linear( blue.200, green.300, cyan.600)'>
       <FormLabel htmlFor="name">Name Of Collectible:</FormLabel>
       <Input
+        color="white"
         id="name"
         name="name"
         value={userFormData.name}
