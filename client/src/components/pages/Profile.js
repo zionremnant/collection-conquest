@@ -45,8 +45,14 @@ const Profile = () => {
                   <p>{item.description}</p>
                   <p>{item.type}</p>
                   <p>{item.dateOfPurchase}</p>
-                  <p>Do you have this Collectible? {item.obtained}</p>
-                  <p>Did you select a reminder? {item.reminder}</p>
+                  <p>
+                    Do you have this Collectible?{" "}
+                    {item.obtained ? "Yes!" : "NO! :("}
+                  </p>
+                  <p>
+                    Did you select a reminder?{" "}
+                    {item.reminder ? "Yuppers!" : "Noppers!"}
+                  </p>
                 </Box>
               );
             })}

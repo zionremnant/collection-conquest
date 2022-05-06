@@ -22,14 +22,15 @@ const userSchema = new Schema(
       minlength: 8,
     },
     // set item to be an array of data that adheres to the itemSchema
-    item: [{
-      type: Schema.Types.ObjectId,
-      ref: "Item"
-    }],
+    items: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Item",
+      },
+    ],
   },
   // set to use virtual below
   { toJSON: { virtuals: true } }
-
 );
 
 userSchema.pre("save", async function (next) {
