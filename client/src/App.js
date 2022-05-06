@@ -58,7 +58,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Profile" element={<Profile />} />
+            <Route path="/Profile/:username" element={<Profile />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/NewItem" element={<NewItem />} />
             <Route path="/Item/:name" element={<Item />} />
