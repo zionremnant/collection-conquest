@@ -1,33 +1,52 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../../utils/queries";
-import { HStack } from "@chakra-ui/react";
+import { Heading, HStack } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
+import { useParams } from "react-router";
 
 const Profile = () => {
-  const { loading, data } = useQuery(QUERY_USER, {
-    fetchPolicy: "no-cache",
-  });
+  const { username } = useParams();
+  console.log(username);
 
-  const itemList = data?.items || [];
+  const { loading, data } = useQuery(QUERY_USER, {
+    variables: { username: username },
+  });
+  console.log(data);
+
+  const itemList = data?.user.items || [];
 
   return (
     <HStack>
       <div>
+        <Heading>Here are ALL of your Collectibles!</Heading>
         {loading ? (
           <div>Loading...</div>
         ) : (
           <div>
             {itemList.map((item) => {
               return (
-                <Box>
+                <Box
+                  bg="teal"
+                  w="30rem"
+                  borderWidth="1rem"
+                  borderRadius="md"
+                  borderColor="teal"
+                  color="white"
+                >
                   <h2>{item.name}</h2>
                   <div>
-                    <Image src={item.ImageURL} alt="Image Of Figure" />
+                    <Image
+                      boxSize="xl"
+                      src={item.imageURL}
+                      alt="Image Of Figure"
+                    />
                   </div>
                   <p>{item.description}</p>
                   <p>{item.type}</p>
                   <p>{item.dateOfPurchase}</p>
+                  <p>Do you have this Collectible? {item.obtained}</p>
+                  <p>Did you select a reminder? {item.reminder}</p>
                 </Box>
               );
             })}
