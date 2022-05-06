@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../../utils/mutations";
+import { ADD_USER } from "../../utils/mutations";
 import { Box, Button, Container, FormControl, Input } from "@chakra-ui/react";
 import { VStack } from "@chakra-ui/react";
-import Signup from "./Signup";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 
 import Auth from "../../utils/auth";
 
-const Login = (props) => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+const Signup = (props) => {
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -29,7 +32,7 @@ const Login = (props) => {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data } = await login({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
@@ -40,6 +43,7 @@ const Login = (props) => {
 
     // clear form values
     setFormState({
+      username: "",
       email: "",
       password: "",
     });
@@ -48,7 +52,7 @@ const Login = (props) => {
   return (
     <VStack>
       <Container>
-        <h4>Login</h4>
+        <h4>Sign Up</h4>
         <Box w="40rem" bg="teal" border="1rem" borderColor="teal">
           {data ? (
             <p>
@@ -57,6 +61,14 @@ const Login = (props) => {
             </p>
           ) : (
             <FormControl>
+              <Input
+                className="form-input"
+                placeholder="Your Name"
+                name="username"
+                type="text"
+                value={formState.username}
+                onChange={handleChange}
+              />
               <Input
                 className="form-input"
                 placeholder="Your email"
@@ -92,9 +104,8 @@ const Login = (props) => {
           )}
         </Box>
       </Container>
-      <Signup />
     </VStack>
   );
 };
 
-export default Login;
+export default Signup;
