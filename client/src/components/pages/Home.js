@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_ITEMS } from "../../utils/queries";
-import { HStack, LinkBox, LinkOverlay, Grid, GridItem, SimpleGrid } from "@chakra-ui/react";
+import { HStack, LinkBox, LinkOverlay, SimpleGrid, Text } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
@@ -20,23 +20,19 @@ const Home = () => {
             <Box
                 w='100%'
                 h='100%'
-                bgGradient='linear( blue.100, green.300, cyan.600)'>
+                bgGradient='linear( blue.200, green.300, cyan.600)'>
                 <Heading
-                    // w='100%'
-                    h='50px'
-                    bgGradient='linear(to-r, teal.500, green.300, cyan.600)'
+                    bgGradient='linear(to-l, #004c4c, cyan.600)'
+                    bgClip='text'
+                    fontSize='6xl'
+                    fontWeight='extrabold'
 
-
-                // bgGradient='linear(to-l, cyan.600, green.300)'
-                // bgClip='text'
-                // fontSize='6xl'
-                // fontWeight='extrabold'
 
 
                 >Welcome to Collection Conquest!!</Heading>
                 <div>
 
-                    <h2>Here is a list of the Collection so far!</h2>
+                    <Text fontSize='2xl' > Here is a list of the Collection so far!!</Text>
                     <HStack>
 
                         {loading ? (
@@ -44,7 +40,7 @@ const Home = () => {
                         ) : (
                             <div>
                                 <HStack>
-                                    <SimpleGrid columns={3} spacing={10}>
+                                    <SimpleGrid columns={3} spacing="15">
                                         {itemList.map((item) => {
                                             return (
                                                 <LinkBox>
@@ -57,7 +53,8 @@ const Home = () => {
                                                         color="white"
 
                                                     >
-                                                        <h2>{item.name}</h2>
+
+                                                        <Text fontSize='4xl' as='u'> {item.name}</Text>
                                                         <div>
                                                             <LinkOverlay href={`/Item/${item.name}`}>
                                                                 <Image
@@ -67,9 +64,8 @@ const Home = () => {
                                                                 />
                                                             </LinkOverlay>
                                                         </div>
-                                                        <p>{item.description}</p>
-                                                        <p>{item.type}</p>
-                                                        <p>{item.dateOfPurchase}</p>
+                                                        <Text fontSize='2xl' > {item.description}</Text>
+                                                        <Text fontSize='1xl' > {item.dateOfPurchase}</Text>
                                                     </Box>
                                                 </LinkBox>
                                             );
