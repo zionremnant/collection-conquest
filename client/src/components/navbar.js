@@ -23,7 +23,11 @@ function NavTabs() {
         </Link>
       </li>
       <li>
-        <Link href="/login">Login</Link>
+        {Auth.loggedIn() ? (
+          <Link onClick={Auth.logout}>Logout</Link>
+        ) : (
+          <Link href="/login">Login</Link>
+        )}
       </li>
     </ul>
   );
