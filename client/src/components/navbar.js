@@ -4,14 +4,15 @@ import Auth from "../utils/auth";
 
 function NavTabs() {
   return (
+  <div className="navBar">
     <ul>
-      <li>
+      <li className="float-child">
         <Link href="/">Home</Link>
       </li>
-      <li>
+      <li className="float-child">
         <Link href="/newitem">New Item</Link>
       </li>
-      <li>
+      <li className="float-child">
         <Link
           href={`/profile/${
             Auth.loggedIn() && Auth.getProfile().data.username
@@ -22,7 +23,7 @@ function NavTabs() {
           Profile
         </Link>
       </li>
-      <li>
+      <li className="float-child">
         {Auth.loggedIn() ? (
           <Link onClick={Auth.logout}>Logout</Link>
         ) : (
@@ -30,6 +31,7 @@ function NavTabs() {
         )}
       </li>
     </ul>
+  </div>
   );
 }
 
