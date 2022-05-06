@@ -4,23 +4,25 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    me: async (parent, args, context) => {
-      if (context.user) {
-        const userData = await User.findOne({ _id: context.user._id }).select(
-          "-__v -password"
-        );
+    user: async (parent, { username }, context) => {
+      // if (context.user) {
+      const userData = await User.findOne({
+        username: username,
+      })
+        .populate("items")
+        .select("-__v -password");
 
-        return userData;
-      }
+      return userData;
+      // }
 
       throw new AuthenticationError("Not logged in");
     },
     items: async () => {
-      return await Item.find()
+      return await Item.find();
     },
-    item: async (parent, {name}) => {
-      return await Item.findOne({name: name})
-    }
+    item: async (parent, { name }) => {
+      return await Item.findOne({ name: name });
+    },
   },
 
   Mutation: {
@@ -47,14 +49,18 @@ const resolvers = {
       return { token, user };
     },
     saveItem: async (parent, { itemData }, context) => {
-      // if (context.user) {
-      console.log(itemData)
-      const item = await Item.create(
-        { ...itemData }
-      );
-      console.log(item)
-      return item;
-      // }
+      if (context.user) {
+        console.log(itemData);
+        const item = await Item.create({ ...itemData });
+        const user = await User.findOneAndUpdate(
+          {
+            username: context.user.username,
+          },
+          { $addToSet: { items: item._id } }
+        );
+        console.log(item, user);
+        return item;
+      }
 
       // throw new AuthenticationError("You need to be logged in!");
     },
