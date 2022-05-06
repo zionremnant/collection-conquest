@@ -34,3 +34,17 @@ The application offers a MERN stack single-page application called Collection Co
 - It's done when the API routes to create and delete posts are protected from non logged-in users.
 - It's done when the code is organized using `Client/Server` REACT architecture.
 - It's done when the pages are rendered using REACT’s component system.
+
+## Links
+
+- Github: https://github.com/zionremnant/collection-conquest
+- Heroku:
+- Kanban: https://trello.com/b/inIOuELl/collection-conquest-project-3
+- Proposal: https://docs.google.com/document/d/13yyuP_aGzy8I39gC3dlazS9bfTwJ1ZuqwVyebO8mwCo/edit
+
+## Authors
+
+- Linnette Capul: https://github.com/LinnetteCapul
+- Zion Yang: https://github.com/zionremnant
+- Daniel Hillsman: https://github.com/danielhillsman
+- Jerry Guerrero: https://github.com/JGuerrero126
