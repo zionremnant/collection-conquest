@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_ITEM } from "../../utils/queries";
-import { Container, HStack } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { Heading } from "@chakra-ui/react";
@@ -9,13 +9,10 @@ import { useParams } from "react-router";
 const Item = () => {
   // use 'useparams()' to retrieve value of the route parameter 'name'
   const { name } = useParams();
-  console.log(name);
   const { loading, data } = useQuery(QUERY_ITEM, {
     // pass URL parameter
     variables: { name: name },
   });
-  console.log(data);
-  // const itemList = data?.items || [];
 
   return (
     <div>
@@ -27,8 +24,6 @@ const Item = () => {
             <div>Loading...</div>
           ) : (
             <div>
-              {/* {itemList.map((item) => { */}
-              {/* return ( */}
               <Box
                 bg="teal"
                 w="30rem"
@@ -46,11 +41,11 @@ const Item = () => {
                   />
                 </div>
                 <p>{data.item.description}</p>
-                <p>{data.item.type}</p>
                 <p>{data.item.dateOfPurchase}</p>
+                <p>{data.item.obtained}</p>
+                <p>{data.item.reminder}</p>
+                {/* <p>{data.item.user}</p> */}
               </Box>
-              {/* ); */}
-              {/* })} */}
             </div>
           )}
         </HStack>

@@ -8,9 +8,13 @@ export const QUERY_USER = gql`
       username
       email
       items {
-        _id
-        itemsText
-        createdAt
+        name
+        description
+        dateOfPurchase
+        imageURL
+        obtained
+        reminder
+        user
       }
     }
   }
