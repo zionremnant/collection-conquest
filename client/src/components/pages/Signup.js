@@ -53,7 +53,7 @@ const Signup = (props) => {
     <VStack>
       <Container>
         <h4>Sign Up</h4>
-        <Box w="40rem" bg="teal" border="1rem" borderColor="teal">
+        <Box w={[280, 400, 500]} bg="teal" border="1rem" borderColor="teal">
           {data ? (
             <p>
               Success! You may now head{" "}
