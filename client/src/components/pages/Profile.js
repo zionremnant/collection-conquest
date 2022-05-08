@@ -18,11 +18,14 @@ const Profile = () => {
   const itemList = data?.user.items || [];
 
   return (
+
     <div>
+
       {Auth.loggedIn() ? (
         <HStack>
 
           <div>
+
             <Heading>Here are ALL of your Collectibles!</Heading>
             {loading ? (
               <div>Loading...</div>
@@ -64,17 +67,25 @@ const Profile = () => {
                       </WrapItem>
                     );
                   })}
+
                 </Wrap>
+
               </div>
             )}
+
           </div>
 
         </HStack>
       ) : (
+
         <Heading> You Need To Be Logged In to view this page! </Heading>
+
       )
+
       }
+
     </div >
+
   );
 };
 
