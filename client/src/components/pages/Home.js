@@ -16,18 +16,18 @@ const Home = () => {
 
     return (
         <div
-        bg='red.200' w={[300, 400, 500]}>
+            bg='red.200' w={[300, 400, 500]}>
 
-            <Box 
+            <Box
                 w='100%'
                 h='100%'
                 bgGradient='linear( blue.200, green.300, cyan.600)'>
-                <Heading 
+                <Heading
                     bgGradient='linear(to-l, #004c4c, cyan.600)'
                     bgClip='text'
                     fontSize={{ base: '40px', md: '40px', lg: '56px' }}
                     fontWeight='extrabold'>
-    Welcome to Collection Conquest!!</Heading>
+                    Welcome to Collection Conquest!!</Heading>
                 <div>
 
                     <Text fontSize='2xl' > Here is a list of the Collection so far!!</Text>

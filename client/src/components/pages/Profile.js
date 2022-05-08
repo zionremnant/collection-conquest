@@ -19,10 +19,6 @@ const Profile = () => {
 
   return (
     <div>
-      <Box 
-        w='100%'
-        h='100%'
-        bgGradient='linear( blue.200, green.300, cyan.600)'>
 
       {Auth.loggedIn() ? (
         <HStack>
@@ -49,7 +45,7 @@ const Profile = () => {
                           <h2>{item.name}</h2>
                           <div>
                             <Image
-                               boxSize={[300, 400, 500]}
+                              boxSize={[300, 400, 500]}
                               src={item.imageURL}
                               alt="Image Of Figure"
                             />
@@ -79,7 +75,7 @@ const Profile = () => {
         <Heading> You Need To Be Logged In to view this page! </Heading>
       )
       }
-      </Box>
+
     </div >
   );
 };
