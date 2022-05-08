@@ -26,11 +26,8 @@ const Home = () => {
                     bgGradient='linear(to-l, #004c4c, cyan.600)'
                     bgClip='text'
                     fontSize={{ base: '40px', md: '40px', lg: '56px' }}
-                    fontWeight='extrabold'
-
-
-
-                >Welcome to Collection Conquest!!</Heading>
+                    fontWeight='extrabold'>
+    Welcome to Collection Conquest!!</Heading>
                 <div>
 
                     <Text fontSize='2xl' > Here is a list of the Collection so far!!</Text>
@@ -52,7 +49,7 @@ const Home = () => {
 
                                                         <Box
                                                             bg="#086F83"
-                                                            w="30rem"
+                                                            w={[300, 400, 500]}
                                                             borderWidth="1rem"
                                                             borderRadius="md"
                                                             borderColor="#086F83"
@@ -64,7 +61,7 @@ const Home = () => {
                                                             <div>
                                                                 <LinkOverlay href={`/Item/${item.name}`}>
                                                                     <Image
-                                                                        boxSize="xl"
+                                                                        boxSize={[300, 400, 500]}
                                                                         src={item.imageURL}
                                                                         alt="Image Of Figure"
                                                                     />

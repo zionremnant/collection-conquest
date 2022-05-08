@@ -7,13 +7,13 @@ function NavTabs() {
   return (
   <div className="topnav">
     <ul>
-      <a className="float-child">
+      <a>
         <Link href="/">Home</Link>
       </a>
-      <a className="float-child">
+      <a>
         <Link href="/newitem">New Item</Link>
       </a>
-      <a className="float-child">
+      <a>
         <Link
           href={`/profile/${
             Auth.loggedIn() && Auth.getProfile().data.username
@@ -24,7 +24,7 @@ function NavTabs() {
           Profile
         </Link>
       </a>
-      <a className="float-child">
+      <a>
         {Auth.loggedIn() ? (
           <Link onClick={Auth.logout}>Logout</Link>
         ) : (
