@@ -8,6 +8,9 @@ import Calendar from "react-calendar";
 import { Checkbox } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import CloudinaryUploadWidget from "../../CloudinaryUploadWidget";
+import { Heading, HStack } from "@chakra-ui/react";
+import Auth from "../../utils/auth";
+
 
 const NewItem = () => {
   const [userFormData, setUserFormData] = useState({
@@ -89,7 +92,9 @@ const NewItem = () => {
   };
 
   return (
-
+  <div>
+    {Auth.loggedIn() ? (
+      <HStack>
     <FormControl>
 
       <FormLabel htmlFor="name">Name Of Collectible:</FormLabel>
@@ -144,7 +149,11 @@ const NewItem = () => {
       </Button>
 
     </FormControl >
-
+    </HStack>
+    ) : (
+      <Heading> You Need To Be Logged In to view this page! </Heading>
+    )}
+    </div>
   );
 };
 
