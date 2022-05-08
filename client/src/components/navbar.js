@@ -2,17 +2,18 @@ import React from "react";
 import { Link } from "@chakra-ui/react";
 import Auth from "../utils/auth";
 
+
 function NavTabs() {
   return (
-  <div className="navBar">
+  <div className="topnav">
     <ul>
-      <li className="float-child">
+      <a>
         <Link href="/">Home</Link>
-      </li>
-      <li className="float-child">
+      </a>
+      <a>
         <Link href="/newitem">New Item</Link>
-      </li>
-      <li className="float-child">
+      </a>
+      <a>
         <Link
           href={`/profile/${
             Auth.loggedIn() && Auth.getProfile().data.username
@@ -22,14 +23,14 @@ function NavTabs() {
         >
           Profile
         </Link>
-      </li>
-      <li className="float-child">
+      </a>
+      <a>
         {Auth.loggedIn() ? (
           <Link onClick={Auth.logout}>Logout</Link>
         ) : (
           <Link href="/login">Login</Link>
         )}
-      </li>
+      </a>
     </ul>
   </div>
   );
