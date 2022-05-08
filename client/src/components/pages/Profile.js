@@ -35,7 +35,7 @@ const Profile = () => {
                       <WrapItem>
                         <Box
                           bg="teal"
-                          w="30rem"
+                          w={[300, 400, 500]}
                           borderWidth="1rem"
                           borderRadius="md"
                           borderColor="teal"
@@ -44,7 +44,7 @@ const Profile = () => {
                           <h2>{item.name}</h2>
                           <div>
                             <Image
-                              boxSize="xl"
+                               boxSize={[300, 400, 500]}
                               src={item.imageURL}
                               alt="Image Of Figure"
                             />
