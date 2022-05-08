@@ -15,16 +15,17 @@ const Home = () => {
     const itemList = data?.items || [];
 
     return (
-        <div bg='red.200' w={[300, 400, 500]}>
+        <div
+        bg='red.200' w={[300, 400, 500]}>
 
-            <Box
+            <Box 
                 w='100%'
                 h='100%'
                 bgGradient='linear( blue.200, green.300, cyan.600)'>
                 <Heading 
                     bgGradient='linear(to-l, #004c4c, cyan.600)'
                     bgClip='text'
-                    fontSize='6xl'
+                    fontSize={{ base: '40px', md: '40px', lg: '56px' }}
                     fontWeight='extrabold'
 
 
