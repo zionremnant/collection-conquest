@@ -22,7 +22,6 @@ const Profile = () => {
   }
 
   return (
-
     <div>
       <Box
         w="100%"
@@ -33,7 +32,9 @@ const Profile = () => {
           <HStack>
             {itemList.length >= 1 ? (
               <div>
-                <Heading>Here are ALL of your Collectibles!</Heading>
+                <Center fontSize="2xl">
+                  Here are ALL of your Collectibles!
+                </Center>
                 {loading ? (
                   <div>Loading...</div>
                 ) : (
@@ -49,11 +50,12 @@ const Profile = () => {
                               borderRadius="md"
                               borderColor="teal"
                               color="white"
+                              marginLeft="6rem"
                             >
                               <h2>{item.name}</h2>
                               <div>
                                 <Image
-                                  boxSize={[300, 400, 500]}
+                                  boxSize="xl"
                                   src={item.imageURL}
                                   alt="Image Of Figure"
                                 />

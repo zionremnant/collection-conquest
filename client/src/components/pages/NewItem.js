@@ -47,7 +47,6 @@ const NewItem = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-
     setUserFormData({ ...userFormData, [name]: value });
   };
 
@@ -79,6 +78,7 @@ const NewItem = () => {
       reminder: false,
       obtained: false,
     });
+    window.location.assign("/");
   };
 
   return (
