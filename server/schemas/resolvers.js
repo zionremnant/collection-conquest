@@ -5,7 +5,7 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   Query: {
     user: async (parent, { username }, context) => {
-      // if (context.user) {
+
       const userData = await User.findOne({
         username: username,
       })
@@ -13,7 +13,7 @@ const resolvers = {
         .select("-__v -password");
 
       return userData;
-      // }
+
 
       throw new AuthenticationError("Not logged in");
     },
@@ -62,7 +62,7 @@ const resolvers = {
         return item;
       }
 
-      // throw new AuthenticationError("You need to be logged in!");
+
     },
     removeItem: async (parent, { itemId }, context) => {
       if (context.user) {

@@ -1,9 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
-import { Box, Button, Container, FormControl, Input } from "@chakra-ui/react";
-import { VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  FormControl,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Text,
+} from "@chakra-ui/react";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 
 import Auth from "../../utils/auth";
@@ -36,7 +43,7 @@ const Signup = (props) => {
         variables: { ...formState },
       });
 
-      Auth.login(data.login.token);
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
@@ -49,62 +56,80 @@ const Signup = (props) => {
     });
   };
 
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
+
   return (
-    <VStack>
-      <Container>
-        <h4>Sign Up</h4>
-        <Box w="40rem" bg="teal" border="1rem" borderColor="teal">
-          {data ? (
-            <p>
-              Success! You may now head{" "}
-              <Link to="/">back to the homepage.</Link>
-            </p>
-          ) : (
-            <FormControl>
-              <Input
-                className="form-input"
-                placeholder="Your Name"
-                name="username"
-                type="text"
-                value={formState.username}
-                onChange={handleChange}
-              />
-              <Input
-                className="form-input"
-                placeholder="Your email"
-                name="email"
-                type="email"
-                value={formState.email}
-                onChange={handleChange}
-              />
+    <div>
+      <Text color="white">Sign Up</Text>
+      <Box>
+        {data ? (
+          <Text color="white" fontSize="1rem">
+            Success! You may now head <Link to="/">back to the homepage.</Link>
+          </Text>
+        ) : (
+          <FormControl>
+            <Input
+              className="form-input"
+              placeholder="Your Name"
+              name="username"
+              type="text"
+              value={formState.username}
+              onChange={handleChange}
+              focusBorderColor="white"
+              bg="white"
+            />
+            <br></br>
+            <br></br>
+            <Input
+              className="form-input"
+              placeholder="Your email"
+              name="email"
+              type="email"
+              value={formState.email}
+              onChange={handleChange}
+              bg="white"
+              focusBorderColor="white"
+            />
+            <br></br>
+            <br></br>
+            <InputGroup size="md">
               <Input
                 className="form-input"
                 placeholder="******"
                 name="password"
-                type="password"
+                type={show ? "text" : "password"}
                 value={formState.password}
                 onChange={handleChange}
+                bg="white"
+                focusBorderColor="white"
               />
-              <Button
-                className="btn btn-block btn-info"
-                style={{ cursor: "pointer" }}
-                type="submit"
-                onClick={handleFormSubmit}
-              >
-                Submit
-              </Button>
-            </FormControl>
-          )}
+              <InputRightElement width="4.5rem">
+                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                  {show ? "Hide" : "Show"}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+            <br></br>
+            <Button
+              className="btn btn-block btn-info"
+              style={{ cursor: "pointer" }}
+              type="submit"
+              onClick={handleFormSubmit}
+            >
+              Submit
+            </Button>
+          </FormControl>
+        )}
 
-          {error && (
-            <Alert status="error">
-              <AlertIcon />
-              {error.message}
-            </Alert>
-          )}
-        </Box>
-      </Container>
-    </VStack>
+        {error && (
+          <Alert status="error">
+            <AlertIcon />
+            {error.message}
+          </Alert>
+        )}
+      </Box>
+    </div>
   );
 };
 
