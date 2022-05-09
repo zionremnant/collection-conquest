@@ -22,6 +22,7 @@ const Profile = () => {
   }
 
   return (
+
     <div>
       <Box
         w="100%"
