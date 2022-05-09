@@ -18,7 +18,7 @@ const Profile = () => {
   const itemList = data?.user.items || [];
 
   if (itemList.length < 1) {
-    console.log("This bitch empty! Yeet!");
+    console.log("Password is required.");
   }
 
   return (

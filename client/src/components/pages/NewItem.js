@@ -1,6 +1,4 @@
-// WORK IN PROGRESS
 import { useMutation } from "@apollo/client";
-// import { useParams } from "react-router-dom";
 import { SAVE_ITEM } from "../../utils/mutations";
 import { Box, Center, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
@@ -48,14 +46,7 @@ const NewItem = () => {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    // if (name === "reminder") {
-    //   console.log(event.target.checked)
-    //   setUserFormData({ ...userFormData, [name]: event.target.checked });
-    // }
-    // if (name === "obtained") {
-    //   console.log(event.target.checked)
-    //   setUserFormData({ ...userFormData, [name]: event.target.checked });
-    // }
+
 
     setUserFormData({ ...userFormData, [name]: value });
   };

@@ -1,4 +1,3 @@
-// WORK IN PROGRESS
 import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
@@ -31,7 +30,7 @@ export const QUERY_ITEMS = gql`
     }
   }
 `;
-// STILL IN PROGRESS
+
 export const QUERY_ITEM = gql`
   query getItem($name: String!) {
     item(name: $name) {
