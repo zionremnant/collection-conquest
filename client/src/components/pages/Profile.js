@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../../utils/queries";
-import { Center, Heading, HStack, Link } from "@chakra-ui/react";
+import { Center, HStack, Link, LinkBox, LinkOverlay } from "@chakra-ui/react";
 import { Image, Wrap, WrapItem } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { useParams } from "react-router";
@@ -13,6 +13,7 @@ const Profile = () => {
   const { loading, data } = useQuery(QUERY_USER, {
     variables: { username: username },
   });
+
   console.log(data);
 
   const itemList = data?.user.items || [];
@@ -43,35 +44,39 @@ const Profile = () => {
                       {itemList.map((item) => {
                         return (
                           <WrapItem>
-                            <Box
-                              bg="teal"
-                              w={[300, 400, 500]}
-                              borderWidth="1rem"
-                              borderRadius="md"
-                              borderColor="teal"
-                              color="white"
-                              marginLeft="6rem"
-                            >
-                              <h2>{item.name}</h2>
-                              <div>
-                                <Image
-                                  boxSize="xl"
-                                  src={item.imageURL}
-                                  alt="Image Of Figure"
-                                />
-                              </div>
-                              <p>{item.description}</p>
-                              <p>{item.type}</p>
-                              <p>{item.dateOfPurchase}</p>
-                              <p>
-                                Do you have this Collectible?{" "}
-                                {item.obtained ? "Yes!" : "NO! :("}
-                              </p>
-                              <p>
-                                Did you select a reminder?{" "}
-                                {item.reminder ? "Yuppers!" : "Noppers!"}
-                              </p>
-                            </Box>
+                            <LinkBox>
+                              <Box
+                                bg="teal"
+                                w={[300, 400, 500]}
+                                borderWidth="1rem"
+                                borderRadius="md"
+                                borderColor="teal"
+                                color="white"
+                                marginLeft="6rem"
+                              >
+                                <h2>{item.name}</h2>
+                                <div>
+                                  <LinkOverlay href={`/Item/${item.name}`}>
+                                    <Image
+                                      boxSize="xl"
+                                      src={item.imageURL[0]}
+                                      alt="Image Of Figure"
+                                    />
+                                  </LinkOverlay>
+                                </div>
+                                <p>{item.description}</p>
+                                <p>{item.type}</p>
+                                <p>{item.dateOfPurchase}</p>
+                                <p>
+                                  Do you have this Collectible?{" "}
+                                  {item.obtained ? "Yes!" : "NO! :("}
+                                </p>
+                                <p>
+                                  Did you select a reminder?{" "}
+                                  {item.reminder ? "Yuppers!" : "Noppers!"}
+                                </p>
+                              </Box>
+                            </LinkBox>
                           </WrapItem>
                         );
                       })}

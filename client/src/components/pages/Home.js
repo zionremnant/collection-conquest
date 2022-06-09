@@ -68,7 +68,7 @@ const Home = () => {
                                 <LinkOverlay href={`/Item/${item.name}`}>
                                   <Image
                                     boxSize="xl"
-                                    src={item.imageURL}
+                                    src={item.imageURL[0]}
                                     alt="Image Of Figure"
                                   />
                                 </LinkOverlay>
