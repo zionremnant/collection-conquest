@@ -6,7 +6,7 @@ import Calendar from "react-calendar";
 import { Checkbox } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
 import CloudinaryUploadWidget from "../../CloudinaryUploadWidget";
-import { Heading, HStack } from "@chakra-ui/react";
+import { HStack } from "@chakra-ui/react";
 import Auth from "../../utils/auth";
 
 const NewItem = () => {
@@ -14,10 +14,13 @@ const NewItem = () => {
     name: "",
     description: "",
     dateOfPurchase: "",
-    imageURL: "",
+    imageURL: [],
     reminder: false,
     obtained: false,
+    user: "",
   });
+
+  const [imageData, setImageData] = useState([]);
 
   const [value, onChange] = useState(new Date());
 
@@ -44,18 +47,24 @@ const NewItem = () => {
     console.log(value);
   }, [value]);
 
+  useEffect(() => {
+    let name = Auth.getProfile().data.username;
+    console.log(name);
+    setUserFormData({ ...userFormData, user: name });
+  }, []);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-  // let { id } = useParams();
-
   const [saveItem, { error }] = useMutation(SAVE_ITEM);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+    setUserFormData({ ...userFormData, user: Auth.getProfile().data.username });
 
     console.log("I am submitting~");
 
@@ -74,10 +83,13 @@ const NewItem = () => {
       name: "",
       description: "",
       dateOfPurchase: "",
-      imageURL: "",
+      imageURL: [],
       reminder: false,
       obtained: false,
+      user: "",
     });
+
+    setImageData([]);
     window.location.assign("/");
   };
 
@@ -171,6 +183,8 @@ const NewItem = () => {
                 <br></br>
 
                 <CloudinaryUploadWidget
+                  setImageData={setImageData}
+                  imageData={imageData}
                   setUserFormData={setUserFormData}
                   userFormData={userFormData}
                 />
