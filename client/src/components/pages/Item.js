@@ -4,6 +4,7 @@ import { Center } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { useParams } from "react-router";
+import { useState } from "react";
 
 const Item = () => {
   // use 'useparams()' to retrieve value of the route parameter 'name'
@@ -12,6 +13,22 @@ const Item = () => {
     // pass URL parameter
     variables: { name: name },
   });
+  let i = 0;
+
+  const [imgSrc, setImgSrc] = useState(i);
+
+  const imageChanger = (e) => {
+    let currentImage = e.target;
+    if (i < data.item.imageURL.length - 1) {
+      i++;
+      currentImage.setAttribute("src", data.item.imageURL[i]);
+      console.log(i);
+      return;
+    }
+    i = 0;
+    currentImage.setAttribute("src", data.item.imageURL[i]);
+    console.log(i);
+  };
 
   return (
     <div>
@@ -31,7 +48,6 @@ const Item = () => {
         </Center>
         <div>
           <Center fontSize="2xl"> Here is the Collectible!!</Center>
-          {/* <HStack> */}
           {loading ? (
             <div>Loading...</div>
           ) : (
@@ -54,8 +70,9 @@ const Item = () => {
 
                 <div>
                   <Image
+                    onClick={(e) => imageChanger(e)}
                     boxSize="xl"
-                    src={data.item.imageURL}
+                    src={data.item.imageURL[imgSrc]}
                     alt="Image Of Figure"
                   />
                 </div>
@@ -74,11 +91,10 @@ const Item = () => {
                 <Center fontSize="1xl">
                   Reminder Requested? {data.item.reminder ? "Yesh!" : "Nopes!"}
                 </Center>
-                <Center fontSize="1xl"> {data.item.user}</Center>
+                <Center fontSize="1xl"> Collected By: {data.item.user}</Center>
               </Box>
             </div>
           )}
-          {/* </HStack> */}
         </div>
       </Box>
     </div>

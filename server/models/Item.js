@@ -19,9 +19,10 @@ const itemSchema = new Schema({
     required: true,
   },
   imageURL: {
-    type: String,
+    type: Array,
     required: true,
   },
+
   reminder: {
     type: Boolean,
     required: true,

@@ -3,24 +3,36 @@
     "name": "Miku Chan",
     "description": "Blue haired girl, Vocaloid",
     "dateOfPurchase": "Wed April 20 2021",
-    "imageURL": "https://static.myfigurecollection.net/upload/items/large/186.jpg",
+    "imageURL": [
+      "https://static.myfigurecollection.net/upload/items/large/186.jpg",
+      "https://64.media.tumblr.com/d702d5fa92be7fe38c67ddfc7a2a77c9/029e82af90551ac8-a9/s1280x1920/99ce757f2744c316b9e55c3aa1388169c5524f9a.jpg"
+    ],
     "reminder": false,
-    "obtained": true
+    "obtained": true,
+    "user": "LCdaQueen"
   },
   {
     "name": "Rengoku",
     "description": "Demon Slayer",
     "dateOfPurchase": "Mon May 05 2022",
-    "imageURL": "https://images.goodsmile.info/cgm/images/product/20201221/10607/79372/large/ef945c97fc72caec8675d4520f217ccf.jpg",
+    "imageURL": [
+      "https://images.goodsmile.info/cgm/images/product/20201221/10607/79372/large/ef945c97fc72caec8675d4520f217ccf.jpg",
+      "https://cdn.shopify.com/s/files/1/0575/4653/9163/products/2588933.jpg?v=1629337159&width=1445"
+    ],
     "reminder": false,
-    "obtained": true
+    "obtained": true,
+    "user": "McDaniel"
   },
   {
     "name": "Sempai",
     "description": "Magical-Girl Sempai",
     "dateOfPurchase": "Thurs Feb 10 2022",
-    "imageURL": "https://m.media-amazon.com/images/I/61MMMvttMdL._AC_SL1000_.jpg",
+    "imageURL": [
+      "https://m.media-amazon.com/images/I/61MMMvttMdL._AC_SL1000_.jpg",
+      "https://images.goodsmile.info/cgm/images/product/20210315/10920/82145/large/147e500e2837ef4a9dd3e3fe7b146206.jpg"
+    ],
     "reminder": false,
-    "obtained": true
+    "obtained": true,
+    "user": "JerryBerry"
   }
 ]
